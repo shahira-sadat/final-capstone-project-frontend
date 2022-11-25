@@ -10,14 +10,14 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom;
-  background-color: orange;
+  background-color: var(--orange);
   color: white;
   padding: 0.5rem;
 }
 
 .welcome h1 {
   font-size: 3.5rem;
-  text-shadow: 1px 1px 2px black;
+  text-shadow: 1px 1px 2px var(--black);
   text-align: center;
 }
 

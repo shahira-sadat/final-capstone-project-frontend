@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Signup() {
 //   const dispatch = useDispatch();
-  const authenticated = true; // useSelector((state) => state.signup.authenticated);
+  const authenticated = false; // useSelector((state) => state.signup.authenticated);
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -34,7 +34,7 @@ function Signup() {
   };
 
   return (
-    <form className="form-container" onSubmit={submitHandler}>
+    <form className="form-container signup" onSubmit={submitHandler}>
       <input
         type="text"
         placeholder="Preferred Username"

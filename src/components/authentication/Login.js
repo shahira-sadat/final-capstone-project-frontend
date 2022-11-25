@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 // import { useSelector, useDispatch } from 'react-redux';
+import '../../assets/styles/Login.css';
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -23,23 +24,20 @@ function Login() {
   };
 
   return (
-    <>
-      <h1>Form to Login</h1>
-      <form className="form-container" onSubmit={submitHandler}>
-        <input
-          type="text"
-          placeholder="Username"
-          name="username"
-          className="form-input"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-        <button type="submit" className="form-button button">
-          Log In
-        </button>
-      </form>
-    </>
+    <form className="form-container login" onSubmit={submitHandler}>
+      <input
+        type="text"
+        placeholder="Username"
+        name="username"
+        className="form-input"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        required
+      />
+      <button type="submit" className="form-button button">
+        Log In
+      </button>
+    </form>
   );
 }
 
