@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 
 function Splash() {
   return (
@@ -13,6 +13,7 @@ function Splash() {
           Sign up
         </NavLink>
       </div>
+      <Outlet />
     </div>
   );
 }

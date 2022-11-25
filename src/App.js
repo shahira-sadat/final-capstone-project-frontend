@@ -3,17 +3,18 @@ import './App.css';
 import Splash from './components/authentication/Splash';
 import Login from './components/authentication/Login';
 import Signup from './components/authentication/Signup';
-import Home from './components/cars/Cars';
+import Cars from './components/cars/Cars';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Splash />}>
-          <Route path="login" element={<Login />} />
-          <Route path="signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         </Route>
-        <Route path="/home" element={<Home />} />
+
+        <Route path="/cars" element={<Cars />} />
       </Routes>
     </Router>
   );
