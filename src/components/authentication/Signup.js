@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Signup() {
 //   const dispatch = useDispatch();
-  const authenticated = false; // useSelector((state) => state.signup.authenticated);
+  const authenticated = true; // useSelector((state) => state.signup.authenticated);
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
