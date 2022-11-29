@@ -1,0 +1,19 @@
+.detailsbody {
+  padding-top: 3rem;
+}
+
+.p-details {
+  text-align: center;
+  color: white;
+  padding-top: 5rem;
+  font-size: 1.4rem;
+  font-family: monospace;
+  font-weight: bold;
+}
+
+.link {
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  width: 0;
+}

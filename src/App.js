@@ -4,6 +4,7 @@ import Splash from './components/authentication/Splash';
 import Login from './components/authentication/Login';
 import Signup from './components/authentication/Signup';
 import Cars from './components/cars/Cars';
+import Details from './components/team/details';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         </Route>
 
         <Route path="/cars" element={<Cars />} />
+        <Route path="/details" element={<Details />} />
       </Routes>
     </Router>
   );
