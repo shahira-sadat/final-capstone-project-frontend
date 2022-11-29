@@ -9,13 +9,7 @@ function CarCard(props) {
   // const location = useLocation();
 
   const {
-    id,
-    img,
-    name,
-    carBrand,
-    carPrice,
-    carColor,
-    carBooked,
+    id, img, name, carBrand, carPrice, carColor, carBooked,
   } = props;
 
   const reservationLink = `/cars/reservation/${id}`;
@@ -27,21 +21,15 @@ function CarCard(props) {
   // };
 
   return (
-    <Link to={reservationLink}>
-      <div className="">
-        <img
-          className="car-img"
-          src={img}
-          alt={name}
-        />
-        <div className="">
-          <h1 className="">
-            {name}
+    <Link to={reservationLink} className="card-link">
+      <div className="card-content">
+        <img className="car-img" src={img} alt={name} />
+        <div className="car-info">
+          <h2 className="">{carBrand}</h2>
+          <h3>
             {' '}
-            (
-            {carBrand}
-            )
-          </h1>
+            {name}
+          </h3>
           {/* {!deleteCar && <p className="">{carType}</p>}
           {reservation && (
             <div className="">
@@ -64,21 +52,21 @@ function CarCard(props) {
               Delete Car
             </button>
           )} */}
-        </div>
 
-        <div>
-          <h2>
-            {carPrice}
-            $
-          </h2>
-          <p>
-            Color:
-            {' '}
-            {carColor}
-          </p>
-          <p>
-            {carBooked ? 'Available' : 'Not available'}
-          </p>
+          <div className="car-price">
+            <h4>
+              {carPrice}
+              $ Daily
+            </h4>
+          </div>
+          <div className="car-options">
+            <p>
+              Color:
+              {' '}
+              {carColor}
+            </p>
+            <p>{!carBooked ? 'Available' : 'Not available'}</p>
+          </div>
         </div>
       </div>
     </Link>

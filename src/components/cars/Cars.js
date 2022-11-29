@@ -33,12 +33,19 @@ function Cars() {
   // }, [dispatch]);
 
   return (
-    <div className="">
-      <div className="">
-        <h1 className="">Cars Available.</h1>
-        <p className="">Select the car you want to reserve.</p>
+    <section className="cars-section">
+      <div className="cars-title">
+        <h1>CARS FOR RENTAL</h1>
+        <p>Select the car you want to reserve.</p>
       </div>
-      <Carousel responsive={responsive} showDots>
+      <Carousel
+        autoPlay
+        keyBoardControl
+        responsive={responsive}
+        showDots
+        infinite
+        removeArrowOnDeviceType={['tablet', 'mobile']}
+      >
         {cars.map((car) => (
           <div key={car.id} className="car-card">
             <CarCard
@@ -54,7 +61,7 @@ function Cars() {
           </div>
         ))}
       </Carousel>
-    </div>
+    </section>
   );
 }
 
