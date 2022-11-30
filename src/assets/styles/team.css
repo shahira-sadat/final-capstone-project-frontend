@@ -95,7 +95,7 @@ section .section-title {
 
 .backside .card a :hover {
   font-size: 18px;
-  color: var(--dark-green) !important;
+  color: green !important;
   background: transparent;
 }
 
