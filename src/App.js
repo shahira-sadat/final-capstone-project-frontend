@@ -5,6 +5,7 @@ import Login from './components/authentication/Login';
 import Signup from './components/authentication/Signup';
 import Cars from './components/cars/Cars';
 import Details from './components/team/details';
+import Teams from './components/team/teams';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
 
         <Route path="/cars" element={<Cars />} />
         <Route path="/details" element={<Details />} />
+        <Route path="/teams" element={<Teams />} />
       </Routes>
     </Router>
   );
