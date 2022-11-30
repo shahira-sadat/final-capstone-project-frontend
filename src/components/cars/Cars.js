@@ -4,6 +4,7 @@ import 'react-multi-carousel/lib/styles.css';
 import { useSelector } from 'react-redux';
 import CarCard from './CarCard';
 import '../../assets/styles/Cars.css';
+import Navbar from '../navbar/Navbar';
 
 function Cars() {
   // const dispatch = useDispatch();
@@ -33,35 +34,38 @@ function Cars() {
   // }, [dispatch]);
 
   return (
-    <section className="cars-section">
-      <div className="cars-title">
-        <h1>CARS FOR RENTAL</h1>
-        <p>Select the car you want to reserve.</p>
-      </div>
-      <Carousel
-        autoPlay
-        keyBoardControl
-        responsive={responsive}
-        showDots
-        infinite
-        removeArrowOnDeviceType={['tablet', 'mobile']}
-      >
-        {cars.map((car) => (
-          <div key={car.id} className="car-card">
-            <CarCard
-              key={car.id}
-              id={car.id}
-              img={car.image}
-              name={car.model_name}
-              carBrand={car.brand}
-              carPrice={car.price}
-              carColor={car.color}
-              carBooked={car.booked}
-            />
-          </div>
-        ))}
-      </Carousel>
-    </section>
+    <>
+      <Navbar />
+      <section className="cars-section">
+        <div className="cars-title">
+          <h1>CARS FOR RENTAL</h1>
+          <p>Select the car you want to reserve.</p>
+        </div>
+        <Carousel
+          autoPlay
+          keyBoardControl
+          responsive={responsive}
+          showDots
+          infinite
+          removeArrowOnDeviceType={['tablet', 'mobile']}
+        >
+          {cars.map((car) => (
+            <div key={car.id} className="car-card">
+              <CarCard
+                key={car.id}
+                id={car.id}
+                img={car.image}
+                name={car.model_name}
+                carBrand={car.brand}
+                carPrice={car.price}
+                carColor={car.color}
+                carBooked={car.booked}
+              />
+            </div>
+          ))}
+        </Carousel>
+      </section>
+    </>
   );
 }
 
