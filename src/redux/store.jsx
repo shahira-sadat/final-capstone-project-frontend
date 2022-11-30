@@ -5,7 +5,7 @@ import teamsRedux from './team/teams';
 const store = configureStore({
   reducer: {
     cars: carsRedux,
-    teams: teamsRedux
+    teams: teamsRedux,
   },
 });
 
