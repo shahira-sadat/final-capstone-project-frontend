@@ -57,8 +57,8 @@ function TeamCard(props) {
 export default TeamCard;
 
 TeamCard.propTypes = {
-  id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
   bio: PropTypes.string.isRequired,
   backbio: PropTypes.string.isRequired,
   github: PropTypes.string.isRequired,
