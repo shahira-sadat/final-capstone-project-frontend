@@ -37,7 +37,7 @@ function Signup() {
     <form className="form-container signup" onSubmit={submitHandler}>
       <input
         type="text"
-        placeholder="Preferred Username"
+        placeholder="Create an Username"
         name="username"
         className="form-input"
         value={username}
@@ -46,7 +46,7 @@ function Signup() {
       />
       <input
         type="text"
-        placeholder="Name"
+        placeholder="Your Full Name"
         name="name"
         className="form-input"
         value={name}
@@ -55,7 +55,7 @@ function Signup() {
       />
       <input
         type="text"
-        placeholder="Email"
+        placeholder="Your Email"
         name="email"
         className="form-input"
         value={email}
@@ -64,7 +64,7 @@ function Signup() {
       />
       <input
         type="password"
-        placeholder="Password"
+        placeholder="Create a Password"
         name="password"
         className="form-input"
         value={password}

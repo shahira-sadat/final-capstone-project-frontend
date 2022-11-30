@@ -1,0 +1,14 @@
+.cars-section {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 3.5rem 1rem;
+}
+
+.cars-title {
+  text-align: center;
+}
+
+.car-card {
+  padding: 1.5rem;
+}

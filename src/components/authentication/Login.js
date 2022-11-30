@@ -5,6 +5,7 @@ import '../../assets/styles/Login.css';
 
 function Login() {
   const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const authenticated = false; // useSelector((state) => state.login.authenticated);
 
@@ -16,6 +17,7 @@ function Login() {
 
   //   state = {
   //     username,
+  // password
   //   };
 
   const submitHandler = (e) => {
@@ -33,6 +35,16 @@ function Login() {
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         required
+      />
+      <input
+        type="password"
+        name="password"
+        id="password"
+        className="form-input"
+        placeholder="Password"
+        required
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
       />
       <button type="submit" className="form-button button">
         Log In
