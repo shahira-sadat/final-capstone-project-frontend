@@ -1,5 +1,6 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
+import '../../assets/styles/team.css';
 
 function TeamCard(props) {
   const {
@@ -54,3 +55,13 @@ function TeamCard(props) {
 }
 
 export default TeamCard;
+
+TeamCard.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  bio: PropTypes.string.isRequired,
+  backbio: PropTypes.string.isRequired,
+  github: PropTypes.string.isRequired,
+  twitter: PropTypes.string.isRequired,
+  linkedin: PropTypes.string.isRequired,
+};
