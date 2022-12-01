@@ -6,6 +6,7 @@ import Signup from './components/authentication/Signup';
 import Cars from './components/cars/Cars';
 import Details from './components/team/details';
 import Navbar from './components/navbar/Navbar';
+import Teams from './components/team/teams';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/navbar" element={<Navbar />} />
         <Route path="/cars" element={<Cars />} />
         <Route path="/details" element={<Details />} />
+        <Route path="/teams" element={<Teams />} />
       </Routes>
     </Router>
   );

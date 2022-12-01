@@ -30,7 +30,7 @@ function Details() {
               <p className="p-details">The Love</p>
             </div>
             <div className="col-md-4 p-0">
-              <Link to="/team" className="link">
+              <Link to="/teams" className="link">
                 <img src={carimage3} alt="car" className="w-100" />
               </Link>
             </div>
