@@ -2,10 +2,13 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import TeamCard from './TeamCard';
 import '../../assets/styles/team.css';
+import Navbar from '../navbar/Navbar';
 
 function Teams() {
   const { teams } = useSelector((state) => state.teams);
   return (
+    <>
+    <Navbar />
     <section id="team" className="pb-5">
       <div className="container">
         <h5 className="section-title h1">OUR TEAM 👨🏻‍💻 👩🏻‍💻 👨🏻‍💻</h5>
@@ -28,6 +31,7 @@ function Teams() {
         </div>
       </div>
     </section>
+   </>
   );
 }
 
