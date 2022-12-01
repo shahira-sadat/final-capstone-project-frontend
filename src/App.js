@@ -5,7 +5,8 @@ import Login from './components/authentication/Login';
 import Signup from './components/authentication/Signup';
 import Cars from './components/cars/Cars';
 import Details from './components/team/details';
-import Navbar from './components/navbar/Navbar';
+import Useredit from './components/authentication/EditUser';
+import CardDetail from './components/cars/CardDetails';
 
 function App() {
   return (
@@ -14,10 +15,10 @@ function App() {
         <Route path="/" element={<Splash />}>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/" element={<Splash />} />
         </Route>
-        <Route path="/navbar" element={<Navbar />} />
+        <Route path="/edit" element={<Useredit />} />
         <Route path="/cars" element={<Cars />} />
+        <Route path="/cars/:id" element={<CardDetail />} />
         <Route path="/details" element={<Details />} />
       </Routes>
     </Router>

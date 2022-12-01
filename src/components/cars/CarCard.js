@@ -12,7 +12,7 @@ function CarCard(props) {
     id, img, name, carBrand, carPrice, carColor, carBooked,
   } = props;
 
-  const reservationLink = `/cars/reservation/${id}`;
+  const reservationLink = `/cars/${id}`;
 
   // const handleDelete = (e, id) => {
   //   e.preventDefault();
@@ -21,15 +21,22 @@ function CarCard(props) {
   // };
 
   return (
-    <Link to={reservationLink} className="card-link">
+    <Link to={reservationLink} id={id} className="card-link">
       <div className="card-content">
         <img className="car-img" src={img} alt={name} />
         <div className="car-info">
           <h2 className="">{carBrand}</h2>
-          <h3>
-            {' '}
-            {name}
-          </h3>
+          <div className="car-features">
+            <h3>
+              {' '}
+              {name}
+            </h3>
+            <p>
+              Color:
+              {' '}
+              {carColor}
+            </p>
+          </div>
           {/* {!deleteCar && <p className="">{carType}</p>}
           {reservation && (
             <div className="">
@@ -60,11 +67,6 @@ function CarCard(props) {
             </h4>
           </div>
           <div className="car-options">
-            <p>
-              Color:
-              {' '}
-              {carColor}
-            </p>
             <p>{!carBooked ? 'Available' : 'Not available'}</p>
           </div>
         </div>
