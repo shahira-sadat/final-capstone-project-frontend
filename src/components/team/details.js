@@ -19,7 +19,9 @@ function Details() {
               <img src={carimage1} alt="car" className="w-100" />
             </div>
             <div className="col-md-4 bg-success">
-              <p className="p-details">Heritage</p>
+              <Link to="/quality" className="link">
+                <p className="p-details">Quality</p>
+              </Link>
             </div>
             <div className="col-md-4 p-0">
               <img src={carimage2} alt="car" className="w-100" />
@@ -27,7 +29,9 @@ function Details() {
           </div>
           <div className="row w-100">
             <div className="col-md-4 bg-warning">
-              <p className="p-details">The Love</p>
+              <Link to="/love" className="link">
+                <p className="p-details">Love</p>
+              </Link>
             </div>
             <div className="col-md-4 p-0">
               <Link to="/teams" className="link">
@@ -35,7 +39,9 @@ function Details() {
               </Link>
             </div>
             <div className="col-md-4 bg-dark">
-              <p className="p-details">Prestige</p>
+              <Link to="/availibility" className="link">
+                <p className="p-details">Availibility</p>
+              </Link>
             </div>
           </div>
           <div className="row w-100">
@@ -43,7 +49,9 @@ function Details() {
               <img src={carimage4} alt="car" className="w-100" />
             </div>
             <div className="col-md-4 bg-info">
-              <p className="p-details">Roma Street</p>
+              <Link to="/beauty" className="link">
+                <p className="p-details">Beauty</p>
+              </Link>
             </div>
             <div className="col-md-4 p-0">
               <img src={carimage5} alt="car" className="w-100" />
