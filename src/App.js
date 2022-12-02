@@ -7,6 +7,10 @@ import Cars from './components/cars/Cars';
 import Details from './components/team/details';
 import Navbar from './components/navbar/Navbar';
 import Teams from './components/team/teams';
+import Love from './components/team/details-pages/love';
+import Quality from './components/team/details-pages/quality';
+import Availibility from './components/team/details-pages/avalibility';
+import Beauty from './components/team/details-pages/beauty';
 
 function App() {
   return (
@@ -21,6 +25,10 @@ function App() {
         <Route path="/cars" element={<Cars />} />
         <Route path="/details" element={<Details />} />
         <Route path="/teams" element={<Teams />} />
+        <Route path="/love" element={<Love />} />
+        <Route path="/quality" element={<Quality />} />
+        <Route path="/availibility" element={<Availibility />} />
+        <Route path="/beauty" element={<Beauty />} />
       </Routes>
     </Router>
   );
