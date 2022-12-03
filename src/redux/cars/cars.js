@@ -9,25 +9,46 @@ export const getCars = createAsyncThunk('cars/getCars', async () => {
   return res;
 });
 
+export const postCar = createAsyncThunk('cars/postCar', async (carData) => {
+  await fetch(carsPath, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      accept: 'application/json',
+    },
+    body: JSON.stringify(carData),
+  }).then((response) => {
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error('Something went wrong');
+  })
+    .then((responseJson) => {
+      console.log(responseJson);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
 export const carsSlice = createSlice({
   name: 'cars',
   initialState: {
     cars: [],
     status: null,
   },
-  // reducers: {
-  //   carsReducer: (state, action) => {
-  //     const newState = state.cars.map((car) => {
-  //       const { reserved } = car;
-  //       if (car.carId !== action.payload) {
-  //         return car;
-  //       }
-  //       return { ...car, reserved: !reserved };
-  //     });
-  //     return { ...state, cars: newState };
-  //   },
-  // },
+  reducers: {},
   extraReducers: {
+    [postCar.fulfilled]: (state, action) => {
+      state.cars = [...state.cars, action.payload];
+      state.status = 'success';
+    },
+    [postCar.pending]: (state) => {
+      state.status = 'loading';
+    },
+    [postCar.rejected]: (state) => {
+      state.status = 'failed';
+    },
     [getCars.pending]: (state) => {
       state.status = 'loading';
     },
@@ -42,7 +63,6 @@ export const carsSlice = createSlice({
           year: carYear,
           price: carPrice,
           booked: carBooked,
-
         } = car;
         return {
           carId,

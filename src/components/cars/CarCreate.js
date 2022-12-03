@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+// import { useNavigate } from 'react-router-dom';
+import { postCar } from '../../redux/cars/cars';
 
 function CarCreate() {
   const [carName, setCarName] = useState('');
@@ -6,10 +9,28 @@ function CarCreate() {
   const [carColor, setCarColor] = useState('');
   const [carYear, setCarYear] = useState('');
   const [carPrice, setCarPrice] = useState('');
+  const [carImage, setCarImage] = useState('');
+
+  const dispatch = useDispatch();
+  // const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const carData = {
+      car_name: carName,
+      brand: carBrand,
+      color: carColor,
+      year: carYear,
+      price: carPrice,
+      image: carImage,
+    };
+    dispatch(postCar(carData));
+    // navigate('/cars');
+  };
 
   return (
     <div>
-      <form className="form-container">
+      <form className="form-container" onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Brand"
@@ -57,13 +78,16 @@ function CarCreate() {
         />
         <input
           type="number"
-          placeholder="Year"
+          placeholder="Price"
           name="carPrice"
           className="form-input"
           value={carPrice}
           onChange={(e) => setCarPrice(e.target.value)}
           required
         />
+        <button type="submit" className="form-button button">
+          Create Car
+        </button>
       </form>
     </div>
   );
