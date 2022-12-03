@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { postCar } from '../../redux/cars/cars';
 
 function CarCreate() {
@@ -12,7 +12,7 @@ function CarCreate() {
   const [carImage, setCarImage] = useState('');
 
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,7 +25,7 @@ function CarCreate() {
       image: carImage,
     };
     dispatch(postCar(carData));
-    // navigate('/cars');
+    navigate('/cars');
   };
 
   return (

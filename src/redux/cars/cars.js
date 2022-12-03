@@ -9,6 +9,28 @@ export const getCars = createAsyncThunk('cars/getCars', async () => {
   return res;
 });
 
+export const deleteCar = createAsyncThunk('cars/deleteCar', async (id) => {
+  await fetch(`${carsPath}/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'content-type': 'application/json',
+      accept: 'application/json',
+    },
+  })
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error('Something went wrong');
+    })
+    .then((responseJson) => {
+      console.log(responseJson);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
 export const postCar = createAsyncThunk('cars/postCar', async (carData) => {
   await fetch(carsPath, {
     method: 'POST',
@@ -17,12 +39,13 @@ export const postCar = createAsyncThunk('cars/postCar', async (carData) => {
       accept: 'application/json',
     },
     body: JSON.stringify(carData),
-  }).then((response) => {
-    if (response.ok) {
-      return response.json();
-    }
-    throw new Error('Something went wrong');
   })
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error('Something went wrong');
+    })
     .then((responseJson) => {
       console.log(responseJson);
     })
