@@ -62,16 +62,16 @@ export const carsSlice = createSlice({
   },
   reducers: {},
   extraReducers: {
-    [deleteCar.fulfilled]: (state, action) => {
-      state.cars = state.cars.filter((car) => car.id !== action.payload),
-      state.status = 'success';
-    },
-    [deleteCar.pending]: (state) => {
-      state.status = 'loading';
-    },
-    [deleteCar.rejected]: (state) => {
-      state.status = 'failed';
-    },
+    // [deleteCar.fulfilled]: (state, action) => {
+    //   state.cars = state.cars.filter((car) => car.id !== action.payload),
+    //   state.status = 'success';
+    // },
+    // [deleteCar.pending]: (state) => {
+    //   state.status = 'loading';
+    // },
+    // [deleteCar.rejected]: (state) => {
+    //   state.status = 'failed';
+    // },
     [postCar.fulfilled]: (state, action) => {
       state.cars = [...state.cars, action.payload];
       state.status = 'success';
