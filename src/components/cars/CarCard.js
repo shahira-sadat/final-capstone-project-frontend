@@ -13,7 +13,7 @@ function CarCard(props) {
     id, img, name, carBrand, carPrice, carColor, carBooked,
   } = props;
 
-  const reservationLink = `/cars/reservation/${id}`;
+  const carDetails = `/cars/details/${id}`;
 
   const handleDelete = (e, id) => {
     e.preventDefault();
@@ -23,7 +23,7 @@ function CarCard(props) {
   };
 
   return (
-    <Link to={reservationLink} className="card-link">
+    <Link to={carDetails} className="card-link">
       <div className="card-content">
         <img className="car-img" src={img} alt={name} />
         <div className="car-info">

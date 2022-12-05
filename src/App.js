@@ -8,6 +8,7 @@ import Details from './components/team/details';
 import Navbar from './components/navbar/Navbar';
 import Teams from './components/team/teams';
 import CarCreate from './components/cars/CarCreate';
+import CarDetails from './components/cars/CarDetails';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
         </Route>
         <Route path="/cars" element={<Cars />} />
+        <Route path="/cars/details/:id" element={<CarDetails />} />
         <Route path="/cars/create" element={<CarCreate />} />
         <Route path="/navbar" element={<Navbar />} />
         <Route path="/details" element={<Details />} />
