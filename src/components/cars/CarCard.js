@@ -1,26 +1,14 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import '../../assets/styles/CarCard.css';
-import { deleteCar } from '../../redux/cars/cars';
 
 function CarCard(props) {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
   const {
     id, img, name, carBrand, carPrice, carColor, carBooked,
   } = props;
 
   const carDetails = `/cars/details/${id}`;
-
-  const handleDelete = (e, id) => {
-    e.preventDefault();
-    navigate('/cars');
-
-    dispatch(deleteCar(id));
-  };
 
   return (
     <Link to={carDetails} className="card-link">
@@ -45,16 +33,6 @@ function CarCard(props) {
               /day
             </p>
           )} */}
-          {deleteCar && (
-            <button
-              className=""
-              type="button"
-              onClick={(e) => handleDelete(e, id)}
-            >
-              Delete Car
-            </button>
-          )}
-
           <div className="car-price">
             <h4>
               {carPrice}
