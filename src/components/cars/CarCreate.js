@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { postCar } from '../../redux/cars/cars';
+import '../../assets/styles/CarCreate.css';
 
 function CarCreate() {
   const [carName, setCarName] = useState('');
@@ -29,7 +30,7 @@ function CarCreate() {
   };
 
   return (
-    <div>
+    <section className="create-section">
       <form className="form-container" onSubmit={handleSubmit}>
         <input
           type="text"
@@ -89,7 +90,7 @@ function CarCreate() {
           Create Car
         </button>
       </form>
-    </div>
+    </section>
   );
 }
 
