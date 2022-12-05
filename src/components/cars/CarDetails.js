@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router';
 // import CarCard from './CarCard';
 // import { getCars } from '../../redux/cars/cars';
 import { deleteCar } from '../../redux/cars/cars';
+import '../../assets/styles/CarDetails.css';
 
 function CarDetails() {
   const dispatch = useDispatch();
@@ -37,14 +38,16 @@ function CarDetails() {
   //       carBooked={car.carBooked}
 
   return (
-    <section>
-      <div>
-        <img src={car.carImage} alt="car-img" />
-      </div>
-      <div>
+    <section className="car-details-section">
+      <div className="details-title">
         <h2>{car.carBrand}</h2>
         <h3>{car.carName}</h3>
       </div>
+
+      <div className="details-img">
+        <img src={car.carImage} alt="car-img" />
+      </div>
+
       <div>
         <p>
           {car.carColor}
@@ -52,9 +55,10 @@ function CarDetails() {
         </p>
         <h3>{car.carPrice}</h3>
       </div>
-      <div>
+      <div className="details-buttons">
+        <button type="button" className="button"> Reserve this Car</button>
         <button
-          className=""
+          className="button delete"
           type="button"
           onClick={(e) => handleDelete(e, id)}
         >
