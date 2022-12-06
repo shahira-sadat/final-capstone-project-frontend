@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from '../navbar/Navbar';
 
-function Reservations() {
+function Bookings() {
   return (
     <>
       <Navbar />
@@ -9,4 +9,4 @@ function Reservations() {
     </>
   );
 }
-export default Reservations;
+export default Bookings;

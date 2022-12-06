@@ -18,8 +18,8 @@ function Navbar() {
               </Link>
             </li>
             <li>
-              <Link to="/reservations" className="link">
-                <p>Reservations</p>
+              <Link to="/bookings" className="link">
+                <p>Bookings</p>
               </Link>
             </li>
             <li>

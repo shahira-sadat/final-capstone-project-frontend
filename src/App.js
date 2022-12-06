@@ -9,7 +9,7 @@ import Navbar from './components/navbar/Navbar';
 import Teams from './components/team/teams';
 import CarCreate from './components/cars/CarCreate';
 import CarDetails from './components/cars/CarDetails';
-import Reservations from './components/reservations/Reservations';
+import Bookings from './components/bookings/Bookings';
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
         <Route path="/navbar" element={<Navbar />} />
         <Route path="/details" element={<Details />} />
         <Route path="/teams" element={<Teams />} />
-        <Route path="/reservations" element={<Reservations />} />
+        <Route path="/reservations" element={<Bookings />} />
       </Routes>
     </Router>
   );
