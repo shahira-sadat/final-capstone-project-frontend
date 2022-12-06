@@ -14,17 +14,27 @@ function Navbar() {
             <img className="user-img" src="https://img.icons8.com/officel/100/null/gender-neutral-user.png" alt="User" />
             <li>
               <Link to="/cars" className="link">
-                <p>settings</p>
+                <p>Home</p>
               </Link>
             </li>
             <li>
-              <Link to="/cars" className="link">
-                <p>Home</p>
+              <Link to="/reservations" className="link">
+                <p>Reservations</p>
+              </Link>
+            </li>
+            <li>
+              <Link to="/cars/create" className="link">
+                <p>Create</p>
               </Link>
             </li>
             <li>
               <Link to="/details" className="link">
                 <p>About us</p>
+              </Link>
+            </li>
+            <li>
+              <Link to="/" className="link">
+                <p>Profile Settings</p>
               </Link>
             </li>
             <li>
