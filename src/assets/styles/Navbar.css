@@ -123,4 +123,15 @@
     width: 100%;
   }
 
+  .toggler:checked {
+    left: 90%;
+  }
+  
+  .toggler:checked ~ .hamburger {
+    transition: 0.5s;
+    left: 90%;
+    transform: rotate(180deg);
+    background-position: 80%;
+  }
+
 }
