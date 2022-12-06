@@ -25,7 +25,7 @@ function App() {
         <Route path="/navbar" element={<Navbar />} />
         <Route path="/details" element={<Details />} />
         <Route path="/teams" element={<Teams />} />
-        <Route path="/reservations" element={<Bookings />} />
+        <Route path="/bookings" element={<Bookings />} />
       </Routes>
     </Router>
   );
