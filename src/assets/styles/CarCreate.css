@@ -14,3 +14,9 @@
     color: white;
     padding: 0.5rem;
 }
+
+.create-section h1 {
+    font-size: 3rem;
+    text-shadow: 1px 1px 2px var(--black);
+    text-align: center;
+  }

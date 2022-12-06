@@ -34,6 +34,7 @@ function CarCreate() {
     <>
       <Navbar />
       <section className="create-section">
+        <h1>Create a Car </h1>
         <form className="form-container" onSubmit={handleSubmit}>
           <input
             type="text"
