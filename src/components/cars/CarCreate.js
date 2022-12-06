@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { postCar } from '../../redux/cars/cars';
 import '../../assets/styles/CarCreate.css';
+import Navbar from '../navbar/Navbar';
 
 function CarCreate() {
   const [carName, setCarName] = useState('');
@@ -31,6 +32,7 @@ function CarCreate() {
 
   return (
     <section className="create-section">
+      <Navbar />
       <form className="form-container" onSubmit={handleSubmit}>
         <input
           type="text"

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router';
 import { getCars, deleteCar } from '../../redux/cars/cars';
 import '../../assets/styles/CarDetails.css';
+import Navbar from '../navbar/Navbar';
 
 function CarDetails() {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ function CarDetails() {
 
   return (
     <section className="car-details-section">
+      <Navbar />
       <div className="details-title">
         <h2>{car.carBrand}</h2>
         <h3>{car.carName}</h3>
