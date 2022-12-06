@@ -4,9 +4,12 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 const carsPath = 'https://cars-rental.onrender.com/api/v1/cars';
 
 export const getCars = createAsyncThunk('cars/getCars', async () => {
-  const response = await fetch(carsPath);
-  const res = await response.json();
-  return res;
+  await fetch(carsPath).then((response) => {
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error('Something went wrong');
+  });
 });
 
 export const deleteCar = createAsyncThunk('cars/deleteCar', async (id) => {
@@ -22,12 +25,6 @@ export const deleteCar = createAsyncThunk('cars/deleteCar', async (id) => {
         return response.json();
       }
       throw new Error('Something went wrong');
-    })
-    .then((responseJson) => {
-      console.log(responseJson);
-    })
-    .catch((error) => {
-      console.log(error);
     });
 });
 
@@ -45,12 +42,6 @@ export const postCar = createAsyncThunk('cars/postCar', async (carData) => {
         return response.json();
       }
       throw new Error('Something went wrong');
-    })
-    .then((responseJson) => {
-      console.log(responseJson);
-    })
-    .catch((error) => {
-      console.log(error);
     });
 });
 
