@@ -28,47 +28,50 @@ function CarDetails() {
   };
 
   return (
-    <section className="car-details-section">
+    <>
       <Navbar />
-      <div className="details-title">
-        <h2>{car.carBrand}</h2>
-        <h3>{car.carName}</h3>
-      </div>
 
-      <div className="details-img">
-        <img src={car.carImage} alt="car-img" />
-      </div>
+      <section className="car-details-section">
+        <div className="details-title">
+          <h2>{car.carBrand}</h2>
+          <h3>{car.carName}</h3>
+        </div>
 
-      <div className="details-footer">
-        <div>
-          <p>
-            Color Available:
-            {' '}
-            {car.carColor}
-            {' '}
-          </p>
-          <h3>
-            Price per Day
-            {' '}
-            {car.carPrice}
-            $
-          </h3>
+        <div className="details-img">
+          <img src={car.carImage} alt="car-img" />
         </div>
-        <div className="details-buttons">
-          <button type="button" className="button">
-            {' '}
-            Reserve this Car
-          </button>
-          <button
-            className="button delete"
-            type="button"
-            onClick={(e) => handleDelete(e, id)}
-          >
-            Delete Car
-          </button>
+
+        <div className="details-footer">
+          <div>
+            <p>
+              Color Available:
+              {' '}
+              {car.carColor}
+              {' '}
+            </p>
+            <h3>
+              Price per Day
+              {' '}
+              {car.carPrice}
+              $
+            </h3>
+          </div>
+          <div className="details-buttons">
+            <button type="button" className="button">
+              {' '}
+              Reserve this Car
+            </button>
+            <button
+              className="button delete"
+              type="button"
+              onClick={(e) => handleDelete(e, id)}
+            >
+              Delete Car
+            </button>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
 
