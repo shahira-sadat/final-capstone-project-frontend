@@ -82,7 +82,6 @@ export const usersSlice = createSlice({
       state.status = 'loading';
     },
     [getUsers.fulfilled]: (state, action) => {
-      console.log(action);
       const users = action.payload.map((user) => {
         const {
           id: userId,

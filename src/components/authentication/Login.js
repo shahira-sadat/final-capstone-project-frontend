@@ -13,9 +13,9 @@ function Login() {
   let authenticated = false;
 
   const checkUser = () => {
-    const userExist = usersList.find((user) => user.userUserName === username);
+    const userExist = usersList.users.find((user) => user.userUserName === username);
     console.log(userExist);
-    if (userExist === username) {
+    if (userExist.userUserName === username) {
       authenticated = true;
     }
 
@@ -33,9 +33,9 @@ function Login() {
   // // password
   // };
 
-  const submitHandler = (e) => {
-    checkUser();
+  const submitHandler = async (e) => {
     e.preventDefault();
+    await checkUser();
   };
 
   return (
