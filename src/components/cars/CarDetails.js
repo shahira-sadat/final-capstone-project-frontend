@@ -10,16 +10,11 @@ function CarDetails() {
   const navigate = useNavigate();
   const { cars } = useSelector((state) => state.cars);
   const { id } = useParams();
+  const car = cars.find((car) => car.carId === Number(id));
 
   useEffect(() => {
     dispatch(getCars());
   }, [dispatch]);
-
-  console.log(cars);
-
-  const car = cars.find((car) => car.carId === Number(id));
-
-  console.log(car);
 
   const handleDelete = (e, id) => {
     e.preventDefault();
