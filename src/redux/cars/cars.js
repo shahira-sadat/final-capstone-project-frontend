@@ -4,12 +4,20 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 const carsPath = 'https://cars-rental.onrender.com/api/v1/cars';
 
 export const getCars = createAsyncThunk('cars/getCars', async () => {
-  await fetch(carsPath).then((response) => {
-    if (response.ok) {
-      return response.json();
-    }
-    throw new Error('Something went wrong');
-  });
+  const token = localStorage.getItem('token');
+  if (token) {
+    const response = await fetch(carsPath, {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        accept: 'application/json',
+        // Authorization: token,
+      },
+    });
+    const cars = await response.json();
+    return cars;
+  }
+  return [];
 });
 
 export const deleteCar = createAsyncThunk('cars/deleteCar', async (id) => {
