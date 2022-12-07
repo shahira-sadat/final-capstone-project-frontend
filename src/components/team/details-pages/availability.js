@@ -2,7 +2,7 @@ import React from 'react';
 import '../../../assets/styles/details-pages.css';
 import Navbar from '../../navbar/Navbar';
 
-function Availibility() {
+function Availability() {
   return (
     <>
       <Navbar />
@@ -10,7 +10,7 @@ function Availibility() {
         <div className="mask vh-100 d-flex flex-column align-items-center text-center availibility">
           <div className="d-flex justify-content-center align-items-center h-100">
             <div className="text-white">
-              <h1 className="mb-3">Availibility</h1>
+              <h1 className="mb-3">Availability</h1>
               <hr />
               <h5 className="mb-4">
                 We are Always available for offering the best service
@@ -24,4 +24,4 @@ function Availibility() {
   );
 }
 
-export default Availibility;
+export default Availability;

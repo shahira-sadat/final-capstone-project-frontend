@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import CarCard from './CarCard';
 import '../../assets/styles/Cars.css';
 import Navbar from '../navbar/Navbar';
+import { getCars } from '../../redux/cars/cars';
 
 function Cars() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const { cars } = useSelector((state) => state.cars);
   const responsive = {
     superLargeDesktop: {
@@ -29,9 +30,9 @@ function Cars() {
     },
   };
 
-  // useEffect(() => {
-  //   dispatch(getCars());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(getCars());
+  }, [dispatch]);
 
   return (
     <>
@@ -53,14 +54,14 @@ function Cars() {
           {cars.map((car) => (
             <div key={car.id} className="car-card">
               <CarCard
-                key={car.id}
-                id={car.id}
-                img={car.image}
-                name={car.model_name}
-                carBrand={car.brand}
-                carPrice={car.price}
-                carColor={car.color}
-                carBooked={car.booked}
+                key={car.carId}
+                id={car.carId}
+                img={car.carImage}
+                name={car.carName}
+                carBrand={car.carBrand}
+                carPrice={car.carPrice}
+                carColor={car.carColor}
+                carBooked={car.carBooked}
               />
             </div>
           ))}
