@@ -13,7 +13,7 @@ function Navbar() {
             <h2>Car Rental</h2>
             <img className="user-img" src="https://img.icons8.com/officel/100/null/gender-neutral-user.png" alt="User" />
             <li>
-              <Link to="/cars" className="link">
+              <Link to="/edit" className="link">
                 <p>settings</p>
               </Link>
             </li>

@@ -26,6 +26,19 @@
   margin: 0;
 }
 
+.car-features {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.car-features p {
+  color: var(--dark-gray);
+  align-self: flex-end;
+  margin: 0;
+}
+
 .car-info h3 {
   color: var(--black);
   font-weight: 700;
