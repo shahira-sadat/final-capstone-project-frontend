@@ -6,7 +6,30 @@
 }
 
 .cars-title {
-  text-align: center;
+  width: 40%;
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: end;
+  padding-right: 2rem;
+  margin-top: 3%;
+}
+
+.cars-title h1 {
+  align-self: center;
+  letter-spacing: 10px;
+  color: black;
+}
+
+.p1 {
+  align-self: center;
+  color: var(--dark-gray);
+}
+
+.p2 {
+  align-self: center;
+  color: var(--light-gray);
 }
 
 .car-card {

@@ -39,8 +39,9 @@ function Cars() {
       <Navbar />
       <section className="cars-section">
         <div className="cars-title">
-          <h1>CARS FOR RENTAL</h1>
-          <p>Select the car you want to reserve.</p>
+          <h1>Latest Models</h1>
+          <p className="p1">Select the car you want to reserve.</p>
+          <p className="p2">...................................</p>
         </div>
         <Carousel
           autoPlay
@@ -65,6 +66,7 @@ function Cars() {
             </div>
           ))}
         </Carousel>
+        <button type="button" className="btn btn-primary">Add Car</button>
       </section>
     </>
   );

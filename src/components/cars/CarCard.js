@@ -8,18 +8,25 @@ function CarCard(props) {
     id, img, name, carBrand, carPrice, carColor, carBooked,
   } = props;
 
-  const carDetails = `/cars/details/${id}`;
+  const carDetailsLink = `/cars/details/${id}`;
 
   return (
-    <Link to={carDetails} className="card-link">
+    <Link to={carDetailsLink} id={id} className="card-link">
       <div className="card-content">
         <img className="car-img" src={img} alt={name} />
         <div className="car-info">
           <h2 className="">{carBrand}</h2>
-          <h3>
-            {' '}
-            {name}
-          </h3>
+          <div className="car-features">
+            <h3>
+              {' '}
+              {name}
+            </h3>
+            <p>
+              Color:
+              {' '}
+              {carColor}
+            </p>
+          </div>
           {/* {!deleteCar && <p className="">{carType}</p>}
           {reservation && (
             <div className="">
@@ -40,11 +47,6 @@ function CarCard(props) {
             </h4>
           </div>
           <div className="car-options">
-            <p>
-              Color:
-              {' '}
-              {carColor}
-            </p>
             <p>{!carBooked ? 'Available' : 'Not available'}</p>
           </div>
         </div>

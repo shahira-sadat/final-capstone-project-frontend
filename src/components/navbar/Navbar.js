@@ -11,7 +11,11 @@ function Navbar() {
         <div>
           <ul>
             <h2>Car Rental</h2>
-            <img className="user-img" src="https://img.icons8.com/officel/100/null/gender-neutral-user.png" alt="User" />
+            <img
+              className="user-img"
+              src="https://img.icons8.com/officel/100/null/gender-neutral-user.png"
+              alt="User"
+            />
             <li>
               <Link to="/cars" className="link">
                 <p>Home</p>
