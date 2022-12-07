@@ -1,49 +1,62 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const bookingsPath = 'https://cars-rental.onrender.com/api/v1/users/:id/bookings';
-
-export const getBookings = createAsyncThunk('bookings/getBookings', async () => {
-  await fetch(bookingsPath).then((response) => {
-    if (response.ok) {
-      return response.json();
-    }
-    throw new Error('Something went wrong');
-  });
-});
-
-export const deleteBooking = createAsyncThunk('bookings/deleteBooking', async (id) => {
-  await fetch(`${bookingsPath}/${id}`, {
-    method: 'DELETE',
-    headers: {
-      'content-type': 'application/json',
-      accept: 'application/json',
-    },
-  })
-    .then((response) => {
+export const getBookings = createAsyncThunk(
+  'bookings/getBookings',
+  async (id) => {
+    await fetch(
+      `https://cars-rental.onrender.com/api/v1/users/${id}/bookings`,
+    ).then((response) => {
       if (response.ok) {
         return response.json();
       }
       throw new Error('Something went wrong');
     });
-});
+  },
+);
 
-export const postBooking = createAsyncThunk('bookings/postBooking', async (BookingData) => {
-  await fetch(bookingsPath, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      accept: 'application/json',
-    },
-    body: JSON.stringify(BookingData),
-  })
-    .then((response) => {
+export const deleteBooking = createAsyncThunk(
+  'bookings/deleteBooking',
+  async (id) => {
+    await fetch(
+      `https://cars-rental.onrender.com/api/v1/users/${id}/bookings`,
+      {
+        method: 'DELETE',
+        headers: {
+          'content-type': 'application/json',
+          accept: 'application/json',
+        },
+      },
+    ).then((response) => {
       if (response.ok) {
         return response.json();
       }
       throw new Error('Something went wrong');
     });
-});
+  },
+);
+
+export const postBooking = createAsyncThunk(
+  'bookings/postBooking',
+  async (bookingData, id) => {
+    await fetch(
+      `https://cars-rental.onrender.com/api/v1/users/${id}/bookings`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          accept: 'application/json',
+        },
+        body: JSON.stringify(BookingData),
+      },
+    ).then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error('Something went wrong');
+    });
+  },
+);
 
 export const bookingsSlice = createSlice({
   name: 'bookings',
@@ -54,7 +67,9 @@ export const bookingsSlice = createSlice({
   reducers: {},
   extraReducers: {
     [deleteBooking.fulfilled]: (state, action) => {
-      const newState = state.bookings.filter((Booking) => Booking.id !== action.payload);
+      const newState = state.bookings.filter(
+        (Booking) => Booking.id !== action.payload,
+      );
       state.bookings = newState;
       state.status = 'success';
     },
