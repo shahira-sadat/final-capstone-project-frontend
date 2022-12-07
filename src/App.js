@@ -10,6 +10,10 @@ import Teams from './components/team/teams';
 import CarCreate from './components/cars/CarCreate';
 import CarDetails from './components/cars/CarDetails';
 import Bookings from './components/bookings/Bookings';
+import Love from './components/team/details-pages/love';
+import Quality from './components/team/details-pages/quality';
+import Availability from './components/team/details-pages/availability';
+import Beauty from './components/team/details-pages/beauty';
 
 function App() {
   return (
@@ -26,6 +30,10 @@ function App() {
         <Route path="/details" element={<Details />} />
         <Route path="/teams" element={<Teams />} />
         <Route path="/bookings" element={<Bookings />} />
+        <Route path="/love" element={<Love />} />
+        <Route path="/quality" element={<Quality />} />
+        <Route path="/availability" element={<Availability />} />
+        <Route path="/beauty" element={<Beauty />} />
       </Routes>
     </Router>
   );
