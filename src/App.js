@@ -24,10 +24,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
         </Route>
+        <Route path="/navbar" element={<Navbar />} />
         <Route path="/cars" element={<Cars />} />
         <Route path="/cars/:id" element={<CarDetails />} />
         <Route path="/cars/create" element={<CarCreate />} />
-        <Route path="/navbar" element={<Navbar />} />
         <Route path="/edit" element={<EditUser />} />
         <Route path="/bookings" element={<Bookings />} />
         <Route path="/details" element={<Details />} />
