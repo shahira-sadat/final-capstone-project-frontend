@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router';
-import { Link } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import { getCars, deleteCar } from '../../redux/cars/cars';
 import '../../assets/styles/CarDetails.css';
 import Navbar from '../navbar/Navbar';
@@ -37,9 +37,9 @@ function CarDetails() {
           </div>
 
           {role === 'user' && (
-          <Link to="/bookings/create" className="link">
+          <NavLink to="book" className="link">
             <p>Book this Car</p>
-          </Link>
+          </NavLink>
           )}
 
           {role === 'admin' && (
@@ -83,6 +83,7 @@ function CarDetails() {
             </h3>
           </div>
         </div>
+        <Outlet />
       </section>
     </>
   );

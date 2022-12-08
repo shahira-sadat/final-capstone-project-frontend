@@ -1,20 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { postBooking } from '../../redux/bookings/bookings';
-import '../../assets/styles/CarCreate.css';
 import Navbar from '../navbar/Navbar';
+import { getCars } from '../../redux/cars/cars';
 
 function CarCreate() {
   const [bookingDate, setBookingDate] = useState('');
   const [bookingDateReturn, setBookingDateReturn] = useState('');
   const [bookingCity, setBookingCity] = useState('');
   const [bookingCar, setCar] = useState('');
-
+  const { id } = useParams();
+  const idToUse = Number(id);
+  console.log(idToUse);
   const { auth } = useSelector((state) => state.users);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setCar(idToUse);
+    dispatch(getCars());
+  }, [dispatch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,7 +38,7 @@ function CarCreate() {
   const screen = (
     <>
       <Navbar />
-      <section className="create-section">
+      <section>
         <h1>Book this Car </h1>
         <form className="form-container" onSubmit={handleSubmit}>
           <label htmlFor="date">
@@ -64,25 +71,32 @@ function CarCreate() {
             />
           </label>
 
+          {/* <label htmlFor="cities">
+            Where you want to book this car?
+            {' '}
+            <select value={bookingCity} onChange={(e) =>
+              setBookingCity(e.target.value)} id="cities">
+              {cars.map((car) => (
+                <option key={car.carId} value={cars.carId}>
+                  {car.carBrand}
+                  ,
+                  {' '}
+                  {car.carName}
+                </option>
+              ))}
+            </select>
+          </label> */}
+
           <label htmlFor="cities">
             Where you want to book this car?
             {' '}
             <select value={bookingCity} onChange={(e) => setBookingCity(e.target.value)} id="cities">
-              <option value="grapefruit">Grapefruit</option>
-              <option value="lime">Lime</option>
-              <option value="coconut">Coconut</option>
-              <option value="mango">Mango</option>
-            </select>
-          </label>
-
-          <label htmlFor="cars">
-            Pick the car you want to book:
-            {' '}
-            <select value={bookingCar} onChange={(e) => setCar(e.target.value)} id="cars">
-              <option value="grapefruit">Grapefruit</option>
-              <option value="lime">Lime</option>
-              <option value="coconut">Coconut</option>
-              <option value="mango">Mango</option>
+              <option value="paris">Paris</option>
+              <option value="tokio">Tokio</option>
+              <option value="madrid">Madrid</option>
+              <option value="toronto">Toronto</option>
+              <option value="sidney">Sidney</option>
+              <option value="boston">Boston</option>
             </select>
           </label>
           <button type="submit" className="form-button button">

@@ -37,9 +37,9 @@ export const getBookings = createAsyncThunk('cars/getBookings', async (id) => {
 
 export const postBooking = createAsyncThunk(
   'bookings/postBooking',
-  async (bookingData, id) => {
+  async (bookingData) => {
     await fetch(
-      `https://cars-rental.onrender.com/api/v1/users/${id}/bookings`,
+      `https://cars-rental.onrender.com/api/v1/users/${bookingData.car_id}/bookings`,
       {
         method: 'POST',
         headers: {
