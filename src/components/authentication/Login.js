@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { postUser } from '../../redux/users/users';
+import { logInUser } from '../../redux/users/users';
 import '../../assets/styles/Login.css';
 
 function Login() {
@@ -20,7 +20,7 @@ function Login() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(postUser(state));
+    dispatch(logInUser(state));
 
     if (auth === true) {
       const { user } = users;
