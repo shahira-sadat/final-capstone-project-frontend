@@ -1,36 +1,42 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { signup } from '../../redux/user/signupSlice';
+import React, { useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { signUpUser } from '../../redux/users/users';
 
 function Signup() {
-//   const dispatch = useDispatch();
-  const authenticated = false; // useSelector((state) => state.signup.authenticated);
+  const dispatch = useDispatch();
+  // const authenticated = false; // useSelector((state) => state.signup.authenticated);
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
+  const [birthday, setBirthday] = useState('');
+  const [photo, setPhoto] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  useEffect(() => {
-    if (authenticated) {
-      navigate('/login');
-    }
-  }, [navigate, authenticated]);
+  // useEffect(() => {
+  //   if (authenticated) {
+  //     navigate('/login');
+  //   }
+  // }, [navigate, authenticated]);
 
-  //   const state = {
-  //     name,
-  //     username,
-  //     email,
-  //     password,
-  //     admin: false,
-  //   };
+  const state = {
+    user: {
+      name,
+      user_name: username,
+      email,
+      password,
+      password_confirmation: passwordConfirmation,
+      photo,
+      date_of_birth: birthday,
+    },
+  };
 
   const submitHandler = (e) => {
     e.preventDefault();
-    // dispatch(signup(state));
+    dispatch(signUpUser(state));
   };
 
   return (
@@ -53,15 +59,41 @@ function Signup() {
         onChange={(e) => setName(e.target.value)}
         required
       />
+
+      <label htmlFor="birthday">
+        Birthday
+        {' '}
+        <input
+          type="date"
+          placeholder="Birthday"
+          name="birthday"
+          className="form-input"
+          value={birthday}
+          onChange={(e) => setBirthday(e.target.value)}
+          required
+        />
+      </label>
+
       <input
         type="text"
-        placeholder="Your Email"
+        placeholder="Email"
         name="email"
         className="form-input"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
       />
+
+      <input
+        type="text"
+        placeholder="Photo Link"
+        name="photo"
+        className="form-input"
+        value={photo}
+        onChange={(e) => setPhoto(e.target.value)}
+        required
+      />
+
       <input
         type="password"
         placeholder="Create a Password"

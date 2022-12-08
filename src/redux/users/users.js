@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const basePath = 'https://cars-rental.onrender.com';
 
-export const signUpUser = createAsyncThunk('/login', async (state) => {
+export const signUpUser = createAsyncThunk('/signup', async (state) => {
   const response = await fetch(`${basePath}/signup`, {
     method: 'POST',
     headers: {
@@ -12,9 +12,10 @@ export const signUpUser = createAsyncThunk('/login', async (state) => {
       // Authorization: token,
     },
     body: JSON.stringify(state),
+
   });
-  const cars = await response.json();
-  return cars;
+  const user = await response.json();
+  return user;
 });
 
 export const logInUser = createAsyncThunk('/login', async (state) => {
@@ -27,8 +28,8 @@ export const logInUser = createAsyncThunk('/login', async (state) => {
     },
     body: JSON.stringify(state),
   });
-  const cars = await response.json();
-  return cars;
+  const user = await response.json();
+  return user;
 });
 
 export const usersSlice = createSlice({
@@ -55,6 +56,22 @@ export const usersSlice = createSlice({
       state.status = 'loading';
     },
     [logInUser.rejected]: (state) => {
+      state.status = 'failed';
+    },
+    [signUpUser.fulfilled]: (state, action) => {
+      if (action.payload.status === 200) {
+        // state.users = action.payload;
+        // state.auth = true;
+        // state.role = action.payload.user.role;
+        state.status = 'success';
+      } else {
+        state.status = 'error';
+      }
+    },
+    [signUpUser.pending]: (state) => {
+      state.status = 'loading';
+    },
+    [signUpUser.rejected]: (state) => {
       state.status = 'failed';
     },
   },
