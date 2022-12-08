@@ -24,7 +24,7 @@ function CarCreate() {
       city: bookingCity,
       car_id: bookingCar,
     };
-    dispatch(postCar(bookingCar));
+    dispatch(postBooking(bookingData));
     navigate('/cars');
   };
 
@@ -32,64 +32,61 @@ function CarCreate() {
     <>
       <Navbar />
       <section className="create-section">
-        <h1>Create a Car </h1>
+        <h1>Book this Car </h1>
         <form className="form-container" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Brand"
-            name="bookingDateReturn"
-            className="form-input"
-            value={bookingDateReturn}
-            onChange={(e) => setbookingDateReturn(e.target.value)}
-            required
-          />
-          <input
-            type="text"
-            placeholder="Model"
-            name="bookingDate"
-            className="form-input"
-            value={bookingDate}
-            onChange={(e) => setbookingDate(e.target.value)}
-            required
-          />
-          <input
-            type="text"
-            placeholder="Image link"
-            name="carImage"
-            className="form-input"
-            value={carImage}
-            onChange={(e) => setCarImage(e.target.value)}
-            required
-          />
-          <input
-            type="text"
-            placeholder="Color"
-            name="bookingCity"
-            className="form-input"
-            value={bookingCity}
-            onChange={(e) => setbookingCity(e.target.value)}
-            required
-          />
-          <input
-            type="number"
-            placeholder="Year"
-            name="carYear"
-            className="form-input"
-            value={carYear}
-            onChange={(e) => setCarYear(e.target.value)}
-            required
-          />
-          <input
-            type="number"
-            placeholder="Price"
-            name="carPrice"
-            className="form-input"
-            value={carPrice}
-            onChange={(e) => setCarPrice(e.target.value)}
-            required
-          />
+          <label htmlFor="date">
+            From
+            {' '}
+            <input
+              id="date"
+              type="date"
+              placeholder="Brand"
+              name="bookingDateReturn"
+              className="form-input"
+              value={bookingDateReturn}
+              onChange={(e) => setBookingDateReturn(e.target.value)}
+              required
+            />
+          </label>
+
+          <label htmlFor="date-return">
+            To:
+            {' '}
+            <input
+              id="date-return"
+              type="date"
+              placeholder="Model"
+              name="bookingDate"
+              className="form-input"
+              value={bookingDate}
+              onChange={(e) => setBookingDate(e.target.value)}
+              required
+            />
+          </label>
+
+          <label htmlFor="cities">
+            Where you want to book this car?
+            {' '}
+            <select value={bookingCity} onChange={(e) => setBookingCity(e.target.value)} id="cities">
+              <option value="grapefruit">Grapefruit</option>
+              <option value="lime">Lime</option>
+              <option value="coconut">Coconut</option>
+              <option value="mango">Mango</option>
+            </select>
+          </label>
+
+          <label htmlFor="cars">
+            Pick the car you want to book:
+            {' '}
+            <select value={bookingCar} onChange={(e) => setCar(e.target.value)} id="cars">
+              <option value="grapefruit">Grapefruit</option>
+              <option value="lime">Lime</option>
+              <option value="coconut">Coconut</option>
+              <option value="mango">Mango</option>
+            </select>
+          </label>
           <button type="submit" className="form-button button">
-            Create Car
+            Book
           </button>
         </form>
       </section>

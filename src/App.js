@@ -16,6 +16,7 @@ import Quality from './components/team/Quality';
 import Beauty from './components/team/Beauty';
 import Navbar from './components/navbar/Navbar';
 import CarUpdate from './components/cars/CarUpdate';
+import BookingCreate from './components/bookings/BookingCreate';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path="/edit" element={<EditUser />} />
 
         <Route path="/bookings" element={<Bookings />} />
+        <Route path="/bookings/create" element={<BookingCreate />} />
 
         <Route path="/details" element={<Details />} />
         <Route path="/details/teams" element={<Teams />} />

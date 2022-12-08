@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 import { getCars, deleteCar } from '../../redux/cars/cars';
 import '../../assets/styles/CarDetails.css';
 import Navbar from '../navbar/Navbar';
@@ -36,10 +37,9 @@ function CarDetails() {
           </div>
 
           {role === 'user' && (
-            <button type="button" className="button">
-              {' '}
-              Reserve this Car
-            </button>
+          <Link to="/bookings/create" className="link">
+            <p>Book this Car</p>
+          </Link>
           )}
 
           {role === 'admin' && (
