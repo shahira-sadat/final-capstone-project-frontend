@@ -9,7 +9,6 @@ function Login() {
   const [password, setPassword] = useState('');
   const { status } = useSelector((state) => state.users);
   const { users } = useSelector((state) => state.users);
-  const { role } = users.user;
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -21,8 +20,8 @@ function Login() {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(postUser(state));
-
-    if (users.status === 200) {
+    if (status === 'success') {
+      const { role } = users.user;
       setRole(role);
       setAuth(true);
       navigate('/cars');

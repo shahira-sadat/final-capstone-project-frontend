@@ -71,14 +71,7 @@ export const usersSlice = createSlice({
     role: null,
     status: null,
   },
-  reducers: {
-    setAuth(state, action) {
-      state.auth = action.payload;
-    },
-    setRole(state, action) {
-      state.role = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers: {
     // [deleteUser.fulfilled]: (state, action) => {
     //   const newState = state.users.filter((User) => User.id !== action.payload);
@@ -94,6 +87,8 @@ export const usersSlice = createSlice({
     [postUser.fulfilled]: (state, action) => {
       if (action.payload.status === 200) {
         state.users = action.payload;
+        state.auth = true;
+        state.role = action.payload.user.role;
         state.status = 'success';
       } else {
         state.status = 'error';
