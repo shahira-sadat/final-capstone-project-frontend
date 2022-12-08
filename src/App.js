@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
+import Availability from './components/team/Availability';
 import Splash from './components/authentication/Splash';
 import Login from './components/authentication/Login';
 import Signup from './components/authentication/Signup';
@@ -12,7 +13,6 @@ import CarDetails from './components/cars/CarDetails';
 import Bookings from './components/bookings/Bookings';
 import Love from './components/team/Love';
 import Quality from './components/team/Quality';
-import Availability from './components/team/Availability';
 import Beauty from './components/team/Beauty';
 import Navbar from './components/navbar/Navbar';
 
