@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getUsers } from '../../redux/users/users';
+import { getUsers, setAuth } from '../../redux/users/users';
 import '../../assets/styles/Login.css';
 
 function Login() {
   const [username, setUsername] = useState('');
-  const usersList = useSelector((state) => state.users);
+  const { users } = useSelector((state) => state.users);
+
   // const [password, setPassword] = useState('');
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   let authenticated = false;
 
   const checkUser = () => {
-    const userExist = usersList.users.find((user) => user.userUserName === username);
-    console.log(userExist);
+    const userExist = users.find((user) => user.userUserName === username);
     if (userExist.userUserName === username) {
       authenticated = true;
+      dispatch(setAuth(authenticated));
     }
 
     if (authenticated) {
@@ -33,9 +35,9 @@ function Login() {
   // // password
   // };
 
-  const submitHandler = async (e) => {
+  const submitHandler = (e) => {
     e.preventDefault();
-    await checkUser();
+    checkUser();
   };
 
   return (

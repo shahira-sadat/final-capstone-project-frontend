@@ -53,9 +53,15 @@ export const usersSlice = createSlice({
   name: 'users',
   initialState: {
     users: [],
+    auth: false,
+    role: null,
     status: null,
   },
-  reducers: {},
+  reducers: {
+    setAuth(state, action) {
+      state.auth = action.payload;
+    },
+  },
   extraReducers: {
     // [deleteUser.fulfilled]: (state, action) => {
     //   const newState = state.users.filter((User) => User.id !== action.payload);
@@ -111,6 +117,6 @@ export const usersSlice = createSlice({
   },
 });
 
-export const { usersReducer } = usersSlice.actions;
+export const { setAuth } = usersSlice.actions;
 
 export default usersSlice.reducer;
