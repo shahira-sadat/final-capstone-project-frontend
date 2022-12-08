@@ -17,7 +17,7 @@ function Bookings() {
     <>
       <Navbar />
       <section>
-        <h1>These are all Your Reservations</h1>
+        <h1>These are all Your Bookings</h1>
         <ul>
           {bookings.map((booking) => (
             <li key={booking.bookingId}>
@@ -43,15 +43,15 @@ function Bookings() {
               <p>
                 From:
                 {' '}
-                {booking.bookingDate}
+                {new Date(booking.bookingDate).toDateString()}
               </p>
               <p>
                 To:
                 {' '}
-                {booking.bookingDateReturn}
+                {new Date(booking.bookingDateReturn).toDateString()}
               </p>
               <p>
-                Daily Fee
+                Daily Fee:
                 {' '}
                 {cars.find((car) => car.carId === booking.bookingCarId).carPrice}
                 {' '}

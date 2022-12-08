@@ -35,27 +35,27 @@ export const getBookings = createAsyncThunk('cars/getBookings', async (id) => {
 //   },
 // );
 
-// export const postBooking = createAsyncThunk(
-//   'bookings/postBooking',
-//   async (bookingData, id) => {
-//     await fetch(
-//       `https://cars-rental.onrender.com/api/v1/users/${id}/bookings`,
-//       {
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/json',
-//           accept: 'application/json',
-//         },
-//         body: JSON.stringify(BookingData),
-//       },
-//     ).then((response) => {
-//       if (response.ok) {
-//         return response.json();
-//       }
-//       throw new Error('Something went wrong');
-//     });
-//   },
-// );
+export const postBooking = createAsyncThunk(
+  'bookings/postBooking',
+  async (bookingData, id) => {
+    await fetch(
+      `https://cars-rental.onrender.com/api/v1/users/${id}/bookings`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          accept: 'application/json',
+        },
+        body: JSON.stringify(bookingData),
+      },
+    ).then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error('Something went wrong');
+    });
+  },
+);
 
 export const bookingsSlice = createSlice({
   name: 'bookings',
@@ -78,16 +78,16 @@ export const bookingsSlice = createSlice({
     // [deleteBooking.rejected]: (state) => {
     //   state.status = 'failed';
     // },
-    // [postBooking.fulfilled]: (state, action) => {
-    //   state.bookings = [...state.bookings, action.payload];
-    //   state.status = 'success';
-    // },
-    // [postBooking.pending]: (state) => {
-    //   state.status = 'loading';
-    // },
-    // [postBooking.rejected]: (state) => {
-    //   state.status = 'failed';
-    // },
+    [postBooking.fulfilled]: (state, action) => {
+      state.bookings = [...state.bookings, action.payload];
+      state.status = 'success';
+    },
+    [postBooking.pending]: (state) => {
+      state.status = 'loading';
+    },
+    [postBooking.rejected]: (state) => {
+      state.status = 'failed';
+    },
     [getBookings.pending]: (state) => {
       state.status = 'loading';
     },
