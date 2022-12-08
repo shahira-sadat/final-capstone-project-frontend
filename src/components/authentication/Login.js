@@ -1,34 +1,17 @@
 import React, { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { postUser } from '../../redux/users/users';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { postUser, setAuth, setRole } from '../../redux/users/users';
 import '../../assets/styles/Login.css';
 
 function Login() {
   const [username, setUsername] = useState('');
-  // const { users } = useSelector((state) => state.users);
   const [password, setPassword] = useState('');
-
-  // const navigate = useNavigate();
+  const { status } = useSelector((state) => state.users);
+  const { users } = useSelector((state) => state.users);
+  const { role } = users.user;
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const authenticated = false;
-
-  // const checkUser = () => {
-  //   const userExist = users.find((user) => user.userUserName === username);
-  //   if (userExist.userUserName === username || userExist.password === password) {
-  //     authenticated = true;
-  //     dispatch(setAuth(authenticated));
-  //     dispatch(setRole(userExist.userRole));
-  //   }
-
-  //   if (authenticated) {
-  //     navigate('/cars');
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   dispatch(getUsers());
-  // }, [dispatch]);
 
   const state = {
     user_name: username,
@@ -38,7 +21,12 @@ function Login() {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(postUser(state));
-    // checkUser();
+
+    if (users.status === 200) {
+      setRole(role);
+      setAuth(true);
+      navigate('/cars');
+    }
   };
 
   return (
@@ -65,6 +53,8 @@ function Login() {
       <button type="submit" className="form-button button">
         Log In
       </button>
+      {status === 'error'
+      && <span>Wrong combination username and password</span>}
     </form>
   );
 }

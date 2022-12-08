@@ -92,8 +92,12 @@ export const usersSlice = createSlice({
     //   state.status = 'failed';
     // },
     [postUser.fulfilled]: (state, action) => {
-      state.users = [...state.users, action.payload];
-      state.status = 'success';
+      if (action.payload.status === 200) {
+        state.users = action.payload;
+        state.status = 'success';
+      } else {
+        state.status = 'error';
+      }
     },
     [postUser.pending]: (state) => {
       state.status = 'loading';
