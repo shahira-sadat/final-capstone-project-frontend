@@ -8,7 +8,7 @@ function CarCard(props) {
     id, img, name, carBrand, carPrice, carColor, carBooked,
   } = props;
 
-  const carDetailsLink = `/cars/details/${id}`;
+  const carDetailsLink = `/cars/${id}`;
 
   return (
     <Link to={carDetailsLink} id={id} className="card-link">
@@ -63,7 +63,7 @@ CarCard.propTypes = {
   name: PropTypes.string.isRequired,
   carColor: PropTypes.string.isRequired,
   carBrand: PropTypes.string.isRequired,
-  carPrice: PropTypes.number.isRequired,
+  carPrice: PropTypes.string.isRequired,
   carBooked: PropTypes.bool,
 };
 

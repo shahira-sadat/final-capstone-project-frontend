@@ -4,12 +4,16 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 const carsPath = 'https://cars-rental.onrender.com/api/v1/cars';
 
 export const getCars = createAsyncThunk('cars/getCars', async () => {
-  await fetch(carsPath).then((response) => {
-    if (response.ok) {
-      return response.json();
-    }
-    throw new Error('Something went wrong');
+  const response = await fetch(carsPath, {
+    method: 'GET',
+    headers: {
+      'content-type': 'application/json',
+      accept: 'application/json',
+      // Authorization: token,
+    },
   });
+  const cars = await response.json();
+  return cars;
 });
 
 export const deleteCar = createAsyncThunk('cars/deleteCar', async (id) => {
@@ -19,13 +23,12 @@ export const deleteCar = createAsyncThunk('cars/deleteCar', async (id) => {
       'content-type': 'application/json',
       accept: 'application/json',
     },
-  })
-    .then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-      throw new Error('Something went wrong');
-    });
+  }).then((response) => {
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error('Something went wrong');
+  });
 });
 
 export const postCar = createAsyncThunk('cars/postCar', async (carData) => {
@@ -36,13 +39,27 @@ export const postCar = createAsyncThunk('cars/postCar', async (carData) => {
       accept: 'application/json',
     },
     body: JSON.stringify(carData),
-  })
-    .then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-      throw new Error('Something went wrong');
-    });
+  }).then((response) => {
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error('Something went wrong');
+  });
+});
+export const updateCar = createAsyncThunk('cars/updateCar', async (carData, id) => {
+  await fetch(`${carsPath}/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      accept: 'application/json',
+    },
+    body: JSON.stringify(carData),
+  }).then((response) => {
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error('Something went wrong');
+  });
 });
 
 export const carsSlice = createSlice({

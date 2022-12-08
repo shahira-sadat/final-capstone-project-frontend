@@ -1,28 +1,44 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { getUsers, setAuth, setRole } from '../../redux/users/users';
 import '../../assets/styles/Login.css';
 
 function Login() {
   const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate();
-  const authenticated = false; // useSelector((state) => state.login.authenticated);
+  const { users } = useSelector((state) => state.users);
 
-  useEffect(() => {
+  // const [password, setPassword] = useState('');
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  let authenticated = false;
+
+  const checkUser = () => {
+    const userExist = users.find((user) => user.userUserName === username);
+    if (userExist.userUserName === username) {
+      authenticated = true;
+      dispatch(setAuth(authenticated));
+      dispatch(setRole(userExist.userRole));
+    }
+
     if (authenticated) {
       navigate('/cars');
     }
-  }, [navigate, authenticated]);
+  };
 
-  //   state = {
-  //     username,
-  // password
-  //   };
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [dispatch]);
+
+  // state = {
+  //   username,
+  // // password
+  // };
 
   const submitHandler = (e) => {
-    // dispatch(login(state));
     e.preventDefault();
+    checkUser();
   };
 
   return (
@@ -36,7 +52,7 @@ function Login() {
         onChange={(e) => setUsername(e.target.value)}
         required
       />
-      <input
+      {/* <input
         type="password"
         name="password"
         id="password"
@@ -45,7 +61,7 @@ function Login() {
         required
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-      />
+      /> */}
       <button type="submit" className="form-button button">
         Log In
       </button>
