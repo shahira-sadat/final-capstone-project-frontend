@@ -1,9 +1,9 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const usersPath = 'https://cars-rental.onrender.com/api/v1/users';
+const usersPath = 'https://cars-rental.onrender.com';
 
-export const getUsers = createAsyncThunk('users/getUsers', async () => {
+export const getUsers = createAsyncThunk('/login', async () => {
   const response = await fetch(usersPath, {
     method: 'GET',
     headers: {
@@ -11,6 +11,20 @@ export const getUsers = createAsyncThunk('users/getUsers', async () => {
       accept: 'application/json',
       // Authorization: token,
     },
+  });
+  const cars = await response.json();
+  return cars;
+});
+
+export const postUser = createAsyncThunk('/login', async (state) => {
+  const response = await fetch(usersPath, {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      accept: 'application/json',
+      // Authorization: token,
+    },
+    body: JSON.stringify(state),
   });
   const cars = await response.json();
   return cars;
@@ -77,16 +91,17 @@ export const usersSlice = createSlice({
     // [deleteUser.rejected]: (state) => {
     //   state.status = 'failed';
     // },
-    // [postUser.fulfilled]: (state, action) => {
-    //   state.users = [...state.users, action.payload];
-    //   state.status = 'success';
-    // },
-    // [postUser.pending]: (state) => {
-    //   state.status = 'loading';
-    // },
-    // [postUser.rejected]: (state) => {
-    //   state.status = 'failed';
-    // },
+    [postUser.fulfilled]: (state, action) => {
+      state.users = [...state.users, action.payload];
+      state.status = 'success';
+    },
+    [postUser.pending]: (state) => {
+      state.status = 'loading';
+    },
+    [postUser.rejected]: (state) => {
+      state.status = 'failed';
+    },
+
     [getUsers.pending]: (state) => {
       state.status = 'loading';
     },
