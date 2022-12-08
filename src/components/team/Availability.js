@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../../assets/styles/details-pages.css';
-import Navbar from '../../navbar/Navbar';
+import Navbar from '../navbar/Navbar';
 
 function Availability() {
   return (

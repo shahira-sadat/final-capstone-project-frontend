@@ -4,7 +4,7 @@ import '../../assets/styles/team.css';
 
 function TeamCard(props) {
   const {
-    name, bio, backbio, image, github, twitter, linkedin,
+    name, bio, backBio, image, github, twitter, linkedin,
   } = props;
 
   return (
@@ -28,7 +28,7 @@ function TeamCard(props) {
           <div className="card">
             <div className="card-body text-center mt-4">
               <h4 className="card-title">{name}</h4>
-              <p className="card-text">{backbio}</p>
+              <p className="card-text">{backBio}</p>
               <ul className="list-inline">
                 <li className="list-inline-item">
                   <a className="social-icon text-xs-center" href={github} rel="noreferrer">
@@ -60,7 +60,7 @@ TeamCard.propTypes = {
   name: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   bio: PropTypes.string.isRequired,
-  backbio: PropTypes.string.isRequired,
+  backBio: PropTypes.string.isRequired,
   github: PropTypes.string.isRequired,
   twitter: PropTypes.string.isRequired,
   linkedin: PropTypes.string.isRequired,

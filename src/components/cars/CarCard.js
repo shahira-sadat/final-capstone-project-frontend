@@ -8,7 +8,7 @@ function CarCard(props) {
     id, img, name, carBrand, carPrice, carColor, carBooked,
   } = props;
 
-  const carDetailsLink = `/cars/details/${id}`;
+  const carDetailsLink = `/cars/${id}`;
 
   return (
     <Link to={carDetailsLink} id={id} className="card-link">

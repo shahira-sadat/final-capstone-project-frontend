@@ -39,7 +39,7 @@ function Details() {
               </Link>
             </div>
             <div className="col-md-4 bg-dark">
-              <Link to="/availibility" className="link">
+              <Link to="/availability" className="link">
                 <p className="p-details">Availibility</p>
               </Link>
             </div>
