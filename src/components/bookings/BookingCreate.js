@@ -12,8 +12,8 @@ function CarCreate() {
   const [bookingCar, setCar] = useState('');
   const { id } = useParams();
   const idToUse = Number(id);
-  console.log(idToUse);
   const { auth } = useSelector((state) => state.users);
+  const userId = useSelector((state) => state.users.id);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -30,6 +30,7 @@ function CarCreate() {
       date_return: bookingDateReturn,
       city: bookingCity,
       car_id: bookingCar,
+      user_id: userId,
     };
     dispatch(postBooking(bookingData));
     navigate('/cars');
