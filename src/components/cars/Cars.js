@@ -10,6 +10,8 @@ import { getCars } from '../../redux/cars/cars';
 function Cars() {
   const dispatch = useDispatch();
   const { cars } = useSelector((state) => state.cars);
+  const { auth } = useSelector((state) => state.users);
+
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -34,7 +36,7 @@ function Cars() {
     dispatch(getCars());
   }, [dispatch]);
 
-  return (
+  const screen = (
     <>
       <Navbar />
       <section className="cars-section">
@@ -66,10 +68,14 @@ function Cars() {
             </div>
           ))}
         </Carousel>
-        <button type="button" className="btn btn-primary">Add Car</button>
+        <button type="button" className="btn btn-primary">
+          Add Car
+        </button>
       </section>
     </>
   );
+
+  return auth ? screen : <h1>You are not logged</h1>;
 }
 
 export default Cars;
