@@ -9,6 +9,7 @@ function CarDetails() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { cars } = useSelector((state) => state.cars);
+  const { auth } = useSelector((state) => state.users);
   const { id } = useParams();
   const car = cars.find((car) => car.carId === Number(id));
 
@@ -22,7 +23,7 @@ function CarDetails() {
     dispatch(deleteCar(id));
   };
 
-  return (
+  const screen = (
     <>
       <Navbar />
 
@@ -68,6 +69,8 @@ function CarDetails() {
       </section>
     </>
   );
+
+  return auth ? screen : <h1>You are not logged</h1>;
 }
 
 export default CarDetails;

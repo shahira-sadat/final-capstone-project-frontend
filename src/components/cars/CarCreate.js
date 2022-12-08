@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { postCar } from '../../redux/cars/cars';
 import '../../assets/styles/CarCreate.css';
@@ -12,6 +12,7 @@ function CarCreate() {
   const [carYear, setCarYear] = useState('');
   const [carPrice, setCarPrice] = useState('');
   const [carImage, setCarImage] = useState('');
+  const { auth } = useSelector((state) => state.users);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ function CarCreate() {
     navigate('/cars');
   };
 
-  return (
+  const screen = (
     <>
       <Navbar />
       <section className="create-section">
@@ -96,8 +97,9 @@ function CarCreate() {
         </form>
       </section>
     </>
-
   );
+
+  return auth ? screen : <h1>You are not logged</h1>;
 }
 
 export default CarCreate;

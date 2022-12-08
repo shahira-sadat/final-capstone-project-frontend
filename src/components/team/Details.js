@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../assets/styles/Details.css';
+import { useSelector } from 'react-redux';
 import carimage1 from '../../assets/img/3.jpg';
 import carimage2 from '../../assets/img/2.jpg';
 import carimage3 from '../../assets/img/meet.jpg';
@@ -9,7 +10,9 @@ import carimage5 from '../../assets/img/7.jpg';
 import Navbar from '../navbar/Navbar';
 
 function Details() {
-  return (
+  const { auth } = useSelector((state) => state.users);
+
+  const screen = (
     <>
       <Navbar />
       <div className="w-100 vh-100">
@@ -61,6 +64,8 @@ function Details() {
       </div>
     </>
   );
+
+  return auth ? screen : <h1>You are not logged</h1>;
 }
 
 export default Details;
