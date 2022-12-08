@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { postCar, getCars } from '../../redux/cars/cars';
+import { updateCar, getCars } from '../../redux/cars/cars';
 import '../../assets/styles/CarCreate.css';
 import Navbar from '../navbar/Navbar';
 
@@ -34,7 +34,7 @@ function CarUpdate() {
       price: carPrice,
       image: carImage,
     };
-    dispatch(postCar(carData));
+    dispatch(updateCar(carData, id));
     navigate('/cars');
   };
 
@@ -42,11 +42,16 @@ function CarUpdate() {
     <>
       <Navbar />
       <section className="create-section">
-        <h1>Create a Car </h1>
+        <h1>
+          Update
+          {' '}
+          {car.carName}
+          {' '}
+        </h1>
         <form className="form-container" onSubmit={handleSubmit}>
           <input
             type="text"
-            placeholder="Brand"
+            placeholder={car.carBrand}
             name="carBrand"
             className="form-input"
             value={carBrand}
@@ -55,51 +60,51 @@ function CarUpdate() {
           />
           <input
             type="text"
-            placeholder="Model"
+            placeholder={car.carName}
             name="carName"
             className="form-input"
-            value={car.carName}
+            value={carName}
             onChange={(e) => setCarName(e.target.value)}
             required
           />
           <input
             type="text"
-            placeholder="Image link"
+            placeholder={car.carImage}
             name="carImage"
             className="form-input"
-            value={car.carImage}
+            value={carImage}
             onChange={(e) => setCarImage(e.target.value)}
             required
           />
           <input
             type="text"
-            placeholder="Color"
+            placeholder={car.carColor}
             name="carColor"
             className="form-input"
-            value={car.carColor}
+            value={carColor}
             onChange={(e) => setCarColor(e.target.value)}
             required
           />
           <input
             type="number"
-            placeholder="Year"
+            placeholder={car.carYear}
             name="carYear"
             className="form-input"
-            value={car.carYear}
+            value={carYear}
             onChange={(e) => setCarYear(e.target.value)}
             required
           />
           <input
             type="number"
-            placeholder="Price"
+            placeholder={car.carPrice}
             name="carPrice"
             className="form-input"
-            value={car.carPrice}
+            value={carPrice}
             onChange={(e) => setCarPrice(e.target.value)}
             required
           />
           <button type="submit" className="form-button button">
-            Create Car
+            Update
           </button>
         </form>
       </section>

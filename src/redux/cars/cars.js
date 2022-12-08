@@ -46,6 +46,21 @@ export const postCar = createAsyncThunk('cars/postCar', async (carData) => {
     throw new Error('Something went wrong');
   });
 });
+export const updateCar = createAsyncThunk('cars/updateCar', async (carData, id) => {
+  await fetch(`${carsPath}/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      accept: 'application/json',
+    },
+    body: JSON.stringify(carData),
+  }).then((response) => {
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error('Something went wrong');
+  });
+});
 
 export const carsSlice = createSlice({
   name: 'cars',

@@ -43,13 +43,23 @@ function CarDetails() {
           )}
 
           {role === 'admin' && (
-            <button
-              className="button delete"
-              type="button"
-              onClick={(e) => handleDelete(e, id)}
-            >
-              Delete Car
-            </button>
+            <div>
+              {' '}
+              <button
+                className="button delete"
+                type="button"
+                onClick={(e) => handleDelete(e, id)}
+              >
+                Delete Car
+              </button>
+              <button
+                className="button delete"
+                type="button"
+                onClick={() => navigate(`/cars/${id}/update`)}
+              >
+                Update Car
+              </button>
+            </div>
           )}
         </div>
 
