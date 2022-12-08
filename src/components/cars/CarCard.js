@@ -63,7 +63,7 @@ CarCard.propTypes = {
   name: PropTypes.string.isRequired,
   carColor: PropTypes.string.isRequired,
   carBrand: PropTypes.string.isRequired,
-  carPrice: PropTypes.number.isRequired,
+  carPrice: PropTypes.string.isRequired,
   carBooked: PropTypes.bool,
 };
 

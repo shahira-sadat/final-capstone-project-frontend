@@ -10,6 +10,7 @@ function CarDetails() {
   const navigate = useNavigate();
   const { cars } = useSelector((state) => state.cars);
   const { auth } = useSelector((state) => state.users);
+  const { role } = useSelector((state) => state.users);
   const { id } = useParams();
   const car = cars.find((car) => car.carId === Number(id));
 
@@ -28,9 +29,28 @@ function CarDetails() {
       <Navbar />
 
       <section className="car-details-section">
-        <div className="details-title">
-          <h2>{car.carBrand}</h2>
-          <h3>{car.carName}</h3>
+        <div className="details-header">
+          <div className="details-title">
+            <h2>{car.carBrand}</h2>
+            <h3>{car.carName}</h3>
+          </div>
+
+          {role === 'user' && (
+            <button type="button" className="button">
+              {' '}
+              Reserve this Car
+            </button>
+          )}
+
+          {role === 'admin' && (
+            <button
+              className="button delete"
+              type="button"
+              onClick={(e) => handleDelete(e, id)}
+            >
+              Delete Car
+            </button>
+          )}
         </div>
 
         <div className="details-img">
@@ -51,19 +71,6 @@ function CarDetails() {
               {car.carPrice}
               $
             </h3>
-          </div>
-          <div className="details-buttons">
-            <button type="button" className="button">
-              {' '}
-              Reserve this Car
-            </button>
-            <button
-              className="button delete"
-              type="button"
-              onClick={(e) => handleDelete(e, id)}
-            >
-              Delete Car
-            </button>
           </div>
         </div>
       </section>

@@ -53,7 +53,7 @@ function Cars() {
           removeArrowOnDeviceType={['tablet', 'mobile']}
         >
           {cars.map((car) => (
-            <div key={car.id} className="car-card">
+            <div key={car.carId} className="car-card">
               <CarCard
                 key={car.carId}
                 id={car.carId}

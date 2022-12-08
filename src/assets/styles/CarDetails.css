@@ -31,7 +31,18 @@
 
 .details-title {
   text-align: start;
-  width: 100%;
+}
+
+.details-header {
+  display: flex;
+  width: 95%;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+
+.details-header button {
+  margin-left: auto;
+  height: 70%;
 }
 
 .details-footer {
