@@ -61,6 +61,9 @@ export const usersSlice = createSlice({
     setAuth(state, action) {
       state.auth = action.payload;
     },
+    setRole(state, action) {
+      state.role = action.payload;
+    },
   },
   extraReducers: {
     // [deleteUser.fulfilled]: (state, action) => {
@@ -117,6 +120,6 @@ export const usersSlice = createSlice({
   },
 });
 
-export const { setAuth } = usersSlice.actions;
+export const { setAuth, setRole } = usersSlice.actions;
 
 export default usersSlice.reducer;

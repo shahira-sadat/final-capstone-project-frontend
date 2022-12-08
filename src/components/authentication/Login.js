@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getUsers, setAuth } from '../../redux/users/users';
+import { getUsers, setAuth, setRole } from '../../redux/users/users';
 import '../../assets/styles/Login.css';
 
 function Login() {
@@ -19,6 +19,7 @@ function Login() {
     if (userExist.userUserName === username) {
       authenticated = true;
       dispatch(setAuth(authenticated));
+      dispatch(setRole(userExist.userRole));
     }
 
     if (authenticated) {
