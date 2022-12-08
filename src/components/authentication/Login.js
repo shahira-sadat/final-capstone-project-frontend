@@ -18,15 +18,15 @@ function Login() {
     password,
   };
 
+  if (auth === true) {
+    setTimeout(() => { navigate('/cars'); }, 2000);
+    const { user } = users;
+    localStorage.setItem('auth', JSON.stringify(user));
+  }
+
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(logInUser(state));
-
-    if (auth === true) {
-      const { user } = users;
-      localStorage.setItem('auth', JSON.stringify(user));
-      navigate('/cars');
-    }
   };
 
   return (
@@ -53,8 +53,10 @@ function Login() {
       <button type="submit" className="form-button button">
         Log In
       </button>
-      {status === 'error'
-      && <span>Wrong combination username and password</span>}
+      <h3>
+        {status}
+        ...
+      </h3>
     </form>
   );
 }
