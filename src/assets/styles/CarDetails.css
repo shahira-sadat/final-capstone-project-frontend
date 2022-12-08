@@ -1,0 +1,40 @@
+.car-details-section {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  padding: 3.5rem 1rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+.details-img {
+  width: 100%;
+  border-radius: 10px;
+  background-color: var(--light-gray);
+  filter: drop-shadow(0 0 0.75rem var(--dark-gray));
+}
+
+.details-img img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.details-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.delete {
+  background-color: var(--orange) !important;
+}
+
+.details-title {
+  text-align: start;
+  width: 100%;
+}
+
+.details-footer {
+  display: flex;
+  margin-top: 3rem;
+}

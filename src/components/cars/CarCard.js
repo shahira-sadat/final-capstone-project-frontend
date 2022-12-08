@@ -1,27 +1,17 @@
 import React from 'react';
-// import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import '../../assets/styles/CarCard.css';
 
 function CarCard(props) {
-  // const dispatch = useDispatch();
-  // const location = useLocation();
-
   const {
     id, img, name, carBrand, carPrice, carColor, carBooked,
   } = props;
 
-  const reservationLink = `/cars/${id}`;
-
-  // const handleDelete = (e, id) => {
-  //   e.preventDefault();
-  //   location.state = {};
-  //   // dispatch(deleteCars(id));
-  // };
+  const carDetailsLink = `/cars/details/${id}`;
 
   return (
-    <Link to={reservationLink} id={id} className="card-link">
+    <Link to={carDetailsLink} id={id} className="card-link">
       <div className="card-content">
         <img className="car-img" src={img} alt={name} />
         <div className="car-info">
@@ -50,16 +40,6 @@ function CarCard(props) {
               /day
             </p>
           )} */}
-          {/* {deleteCar && (
-            <button
-              className=""
-              type="button"
-              onClick={(e) => handleDelete(e, id)}
-            >
-              Delete Car
-            </button>
-          )} */}
-
           <div className="car-price">
             <h4>
               {carPrice}

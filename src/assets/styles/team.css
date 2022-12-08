@@ -3,7 +3,7 @@ html {
 }
 
 .btn-primary {
-  color: #fff;
+  color: #ffff;
   background-color: var(--green);
   border-color: var(--green);
 }
