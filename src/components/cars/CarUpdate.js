@@ -15,7 +15,8 @@ function CarUpdate() {
   const { auth } = useSelector((state) => state.users);
   const { cars } = useSelector((state) => state.cars);
   const { id } = useParams();
-  const car = cars.find((car) => car.carId === Number(id));
+  const idToUse = Number(id);
+  const car = cars.find((car) => car.carId === idToUse);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -27,6 +28,7 @@ function CarUpdate() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const carData = {
+      id: idToUse,
       car_name: carName,
       brand: carBrand,
       color: carColor,
@@ -34,7 +36,7 @@ function CarUpdate() {
       price: carPrice,
       image: carImage,
     };
-    dispatch(updateCar(carData, id));
+    dispatch(updateCar(carData));
     navigate('/cars');
   };
 

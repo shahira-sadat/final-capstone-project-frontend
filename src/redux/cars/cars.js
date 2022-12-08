@@ -46,8 +46,9 @@ export const postCar = createAsyncThunk('cars/postCar', async (carData) => {
     throw new Error('Something went wrong');
   });
 });
-export const updateCar = createAsyncThunk('cars/updateCar', async (carData, id) => {
-  await fetch(`${carsPath}/${id}`, {
+export const updateCar = createAsyncThunk('cars/updateCar', async (carData) => {
+  console.log(carData);
+  await fetch(`${carsPath}/${carData.id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
