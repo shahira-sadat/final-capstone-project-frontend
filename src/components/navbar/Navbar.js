@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../assets/styles/Navbar.css';
+import { useSelector } from 'react-redux';
 
 function Navbar() {
+  const { role } = useSelector((state) => state.users);
   return (
     <>
       <input type="checkbox" className="toggler" />
@@ -21,16 +23,22 @@ function Navbar() {
                 <p>Home</p>
               </Link>
             </li>
-            <li>
-              <Link to="/bookings" className="link">
-                <p>Bookings</p>
-              </Link>
-            </li>
-            <li>
-              <Link to="/cars/create" className="link">
-                <p>Create</p>
-              </Link>
-            </li>
+            {role === 'user' && (
+              <li>
+                <Link to="/bookings" className="link">
+                  <p>Bookings</p>
+                </Link>
+              </li>
+            )}
+
+            {role === 'admin' && (
+              <li>
+                <Link to="/cars/create" className="link">
+                  <p>Create</p>
+                </Link>
+              </li>
+            )}
+
             <li>
               <Link to="/details" className="link">
                 <p>About us</p>

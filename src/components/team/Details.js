@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../assets/styles/Details.css';
+import { useSelector } from 'react-redux';
 import carimage1 from '../../assets/img/3.jpg';
 import carimage2 from '../../assets/img/2.jpg';
 import carimage3 from '../../assets/img/meet.jpg';
@@ -9,7 +10,9 @@ import carimage5 from '../../assets/img/7.jpg';
 import Navbar from '../navbar/Navbar';
 
 function Details() {
-  return (
+  const { auth } = useSelector((state) => state.users);
+
+  const screen = (
     <>
       <Navbar />
       <div className="w-100 vh-100">
@@ -19,7 +22,7 @@ function Details() {
               <img src={carimage1} alt="car" className="w-100" />
             </div>
             <div className="col-md-4 bg-success">
-              <Link to="/quality" className="link">
+              <Link to="/details/quality" className="link">
                 <p className="p-details">Quality</p>
               </Link>
             </div>
@@ -29,17 +32,17 @@ function Details() {
           </div>
           <div className="row w-100">
             <div className="col-md-4 bg-warning">
-              <Link to="/love" className="link">
+              <Link to="/details/love" className="link">
                 <p className="p-details">Love</p>
               </Link>
             </div>
             <div className="col-md-4 p-0">
-              <Link to="/teams" className="link">
+              <Link to="/details/teams" className="link">
                 <img src={carimage3} alt="car" className="w-100" />
               </Link>
             </div>
             <div className="col-md-4 bg-dark">
-              <Link to="/availibility" className="link">
+              <Link to="/details/availability" className="link">
                 <p className="p-details">Availibility</p>
               </Link>
             </div>
@@ -49,7 +52,7 @@ function Details() {
               <img src={carimage4} alt="car" className="w-100" />
             </div>
             <div className="col-md-4 bg-info">
-              <Link to="/beauty" className="link">
+              <Link to="/details/beauty" className="link">
                 <p className="p-details">Beauty</p>
               </Link>
             </div>
@@ -61,6 +64,8 @@ function Details() {
       </div>
     </>
   );
+
+  return auth ? screen : <h1>You are not logged</h1>;
 }
 
 export default Details;

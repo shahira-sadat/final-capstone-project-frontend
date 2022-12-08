@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { postCar } from '../../redux/cars/cars';
+import { useNavigate, useParams } from 'react-router-dom';
+import { updateCar, getCars } from '../../redux/cars/cars';
 import '../../assets/styles/CarCreate.css';
 import Navbar from '../navbar/Navbar';
 
-function CarCreate() {
+function CarUpdate() {
   const [carName, setCarName] = useState('');
   const [carBrand, setCarBrand] = useState('');
   const [carColor, setCarColor] = useState('');
@@ -13,9 +13,16 @@ function CarCreate() {
   const [carPrice, setCarPrice] = useState('');
   const [carImage, setCarImage] = useState('');
   const { auth } = useSelector((state) => state.users);
+  const { cars } = useSelector((state) => state.cars);
+  const { id } = useParams();
+  const car = cars.find((car) => car.carId === Number(id));
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(getCars());
+  }, [dispatch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,7 +34,7 @@ function CarCreate() {
       price: carPrice,
       image: carImage,
     };
-    dispatch(postCar(carData));
+    dispatch(updateCar(carData, id));
     navigate('/cars');
   };
 
@@ -35,11 +42,16 @@ function CarCreate() {
     <>
       <Navbar />
       <section className="create-section">
-        <h1>Create a Car </h1>
+        <h1>
+          Update
+          {' '}
+          {car.carName}
+          {' '}
+        </h1>
         <form className="form-container" onSubmit={handleSubmit}>
           <input
             type="text"
-            placeholder="Brand"
+            placeholder={car.carBrand}
             name="carBrand"
             className="form-input"
             value={carBrand}
@@ -48,7 +60,7 @@ function CarCreate() {
           />
           <input
             type="text"
-            placeholder="Model"
+            placeholder={car.carName}
             name="carName"
             className="form-input"
             value={carName}
@@ -57,7 +69,7 @@ function CarCreate() {
           />
           <input
             type="text"
-            placeholder="Image link"
+            placeholder={car.carImage}
             name="carImage"
             className="form-input"
             value={carImage}
@@ -66,7 +78,7 @@ function CarCreate() {
           />
           <input
             type="text"
-            placeholder="Color"
+            placeholder={car.carColor}
             name="carColor"
             className="form-input"
             value={carColor}
@@ -75,7 +87,7 @@ function CarCreate() {
           />
           <input
             type="number"
-            placeholder="Year"
+            placeholder={car.carYear}
             name="carYear"
             className="form-input"
             value={carYear}
@@ -84,7 +96,7 @@ function CarCreate() {
           />
           <input
             type="number"
-            placeholder="Price"
+            placeholder={car.carPrice}
             name="carPrice"
             className="form-input"
             value={carPrice}
@@ -92,7 +104,7 @@ function CarCreate() {
             required
           />
           <button type="submit" className="form-button button">
-            Create Car
+            Update
           </button>
         </form>
       </section>
@@ -102,4 +114,4 @@ function CarCreate() {
   return auth ? screen : <h1>You are not logged</h1>;
 }
 
-export default CarCreate;
+export default CarUpdate;
