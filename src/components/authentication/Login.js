@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { postUser, setAuth, setRole } from '../../redux/users/users';
+import { postUser } from '../../redux/users/users';
 import '../../assets/styles/Login.css';
 
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const { status } = useSelector((state) => state.users);
+  const { auth } = useSelector((state) => state.users);
   const { users } = useSelector((state) => state.users);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -20,10 +21,10 @@ function Login() {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(postUser(state));
-    if (status === 'success') {
-      const { role } = users.user;
-      setRole(role);
-      setAuth(true);
+
+    if (auth === true) {
+      const { user } = users;
+      localStorage.setItem('auth', JSON.stringify(user));
       navigate('/cars');
     }
   };
