@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getUsers, setAuth, setRole } from '../../redux/users/users';
+import {
+  getUsers, setAuth, setRole, setId,
+} from '../../redux/users/users';
 import '../../assets/styles/Login.css';
 
 function Login() {
@@ -20,6 +22,7 @@ function Login() {
       authenticated = true;
       dispatch(setAuth(authenticated));
       dispatch(setRole(userExist.userRole));
+      dispatch(setId(userExist.userId));
     }
 
     if (authenticated) {

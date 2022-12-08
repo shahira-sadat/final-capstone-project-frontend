@@ -55,6 +55,7 @@ export const usersSlice = createSlice({
     users: [],
     auth: false,
     role: null,
+    id: null,
     status: null,
   },
   reducers: {
@@ -63,6 +64,9 @@ export const usersSlice = createSlice({
     },
     setRole(state, action) {
       state.role = action.payload;
+    },
+    setId(state, action) {
+      state.id = action.payload;
     },
   },
   extraReducers: {
@@ -120,6 +124,6 @@ export const usersSlice = createSlice({
   },
 });
 
-export const { setAuth, setRole } = usersSlice.actions;
+export const { setAuth, setRole, setId } = usersSlice.actions;
 
 export default usersSlice.reducer;
