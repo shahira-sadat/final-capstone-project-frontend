@@ -1,47 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import {
-  getUsers, setAuth, setRole, setId,
-} from '../../redux/users/users';
+import { useDispatch, useSelector } from 'react-redux';
+import { logInUser } from '../../redux/users/users';
 import '../../assets/styles/Login.css';
 
 function Login() {
   const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const { status } = useSelector((state) => state.users);
+  const { auth } = useSelector((state) => state.users);
   const { users } = useSelector((state) => state.users);
-
-  // const [password, setPassword] = useState('');
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  let authenticated = false;
 
-  const checkUser = () => {
-    const userExist = users.find((user) => user.userUserName === username);
-    if (userExist.userUserName === username) {
-      authenticated = true;
-      dispatch(setAuth(authenticated));
-      dispatch(setRole(userExist.userRole));
-      dispatch(setId(userExist.userId));
-    }
-
-    if (authenticated) {
-      navigate('/cars');
-    }
+  const state = {
+    user_name: username,
+    password,
   };
 
-  useEffect(() => {
-    dispatch(getUsers());
-  }, [dispatch]);
-
-  // state = {
-  //   username,
-  // // password
-  // };
+  if (auth === true) {
+    setTimeout(() => { navigate('/cars'); }, 2000);
+    const { user } = users;
+    localStorage.setItem('auth', JSON.stringify(user));
+  }
 
   const submitHandler = (e) => {
     e.preventDefault();
-    checkUser();
+    dispatch(logInUser(state));
   };
 
   return (
@@ -55,7 +40,7 @@ function Login() {
         onChange={(e) => setUsername(e.target.value)}
         required
       />
-      {/* <input
+      <input
         type="password"
         name="password"
         id="password"
@@ -64,10 +49,14 @@ function Login() {
         required
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-      /> */}
+      />
       <button type="submit" className="form-button button">
         Log In
       </button>
+      <h3>
+        {status}
+        ...
+      </h3>
     </form>
   );
 }
