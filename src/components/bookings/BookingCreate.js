@@ -13,10 +13,10 @@ function CarCreate() {
   const { id } = useParams();
   const idToUse = Number(id);
   const { auth } = useSelector((state) => state.users);
-  const userId = useSelector((state) => state.users.id);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const idUser = JSON.parse(localStorage.getItem('auth')).id;
 
   useEffect(() => {
     setCar(idToUse);
@@ -30,10 +30,10 @@ function CarCreate() {
       date_return: bookingDateReturn,
       city: bookingCity,
       car_id: bookingCar,
-      user_id: userId,
+      user_id: idUser,
     };
     dispatch(postBooking(bookingData));
-    navigate('/cars');
+    navigate('/bookings');
   };
 
   const screen = (

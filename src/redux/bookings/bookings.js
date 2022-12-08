@@ -1,18 +1,24 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-export const getBookings = createAsyncThunk('cars/getBookings', async (id) => {
-  const response = await fetch(`https://cars-rental.onrender.com/api/v1/users/${id}/bookings`, {
-    method: 'GET',
-    headers: {
-      'content-type': 'application/json',
-      accept: 'application/json',
-      // Authorization: token,
-    },
-  });
-  const cars = await response.json();
-  return cars;
-});
+export const getBookings = createAsyncThunk(
+  'bookings/getBookings',
+  async (idUser) => {
+    const response = await fetch(
+      `https://cars-rental.onrender.com/api/v1/users/${idUser}/bookings`,
+      {
+        method: 'GET',
+        headers: {
+          'content-type': 'application/json',
+          accept: 'application/json',
+          // Authorization: token,
+        },
+      },
+    );
+    const bookings = await response.json();
+    return bookings;
+  },
+);
 
 // export const deleteBooking = createAsyncThunk(
 //   'bookings/deleteBooking',

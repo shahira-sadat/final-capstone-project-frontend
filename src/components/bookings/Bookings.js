@@ -2,15 +2,17 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Navbar from '../navbar/Navbar';
 import { getBookings } from '../../redux/bookings/bookings';
+import { getCars } from '../../redux/cars/cars';
 
 function Bookings() {
   const dispatch = useDispatch();
   const { bookings } = useSelector((state) => state.bookings);
   const { cars } = useSelector((state) => state.cars);
-  const { id } = useSelector((state) => state.users);
+  const idUser = JSON.parse(localStorage.getItem('auth')).id;
 
   useEffect(() => {
-    dispatch(getBookings(id));
+    dispatch(getBookings(idUser));
+    dispatch(getCars());
   }, [dispatch]);
 
   return (
