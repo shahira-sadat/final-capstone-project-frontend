@@ -1,44 +1,44 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { postUser, setAuth, setRole } from '../../redux/users/users';
+import React, { useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { postUser } from '../../redux/users/users';
 import '../../assets/styles/Login.css';
 
 function Login() {
   const [username, setUsername] = useState('');
-  const { users } = useSelector((state) => state.users);
+  // const { users } = useSelector((state) => state.users);
   const [password, setPassword] = useState('');
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
-  let authenticated = false;
+  // const authenticated = false;
 
-  const checkUser = () => {
-    const userExist = users.find((user) => user.userUserName === username);
-    if (userExist.userUserName === username || userExist.password === password) {
-      authenticated = true;
-      dispatch(setAuth(authenticated));
-      dispatch(setRole(userExist.userRole));
-    }
+  // const checkUser = () => {
+  //   const userExist = users.find((user) => user.userUserName === username);
+  //   if (userExist.userUserName === username || userExist.password === password) {
+  //     authenticated = true;
+  //     dispatch(setAuth(authenticated));
+  //     dispatch(setRole(userExist.userRole));
+  //   }
 
-    if (authenticated) {
-      navigate('/cars');
-    }
-  };
+  //   if (authenticated) {
+  //     navigate('/cars');
+  //   }
+  // };
 
-  useEffect(() => {
-    dispatch(postUser());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getUsers());
+  // }, [dispatch]);
 
   const state = {
-    username,
+    user_name: username,
     password,
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(postUser(state));
-    checkUser();
+    // checkUser();
   };
 
   return (

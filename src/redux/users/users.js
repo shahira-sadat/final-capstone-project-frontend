@@ -3,21 +3,21 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const usersPath = 'https://cars-rental.onrender.com';
 
-export const getUsers = createAsyncThunk('/login', async () => {
-  const response = await fetch(usersPath, {
-    method: 'GET',
-    headers: {
-      'content-type': 'application/json',
-      accept: 'application/json',
-      // Authorization: token,
-    },
-  });
-  const cars = await response.json();
-  return cars;
-});
+// export const getUsers = createAsyncThunk('/login', async () => {
+//   const response = await fetch(usersPath, {
+//     method: 'GET',
+//     headers: {
+//       'content-type': 'application/json',
+//       accept: 'application/json',
+//       // Authorization: token,
+//     },
+//   });
+//   const cars = await response.json();
+//   return cars;
+// });
 
 export const postUser = createAsyncThunk('/login', async (state) => {
-  const response = await fetch(usersPath, {
+  const response = await fetch(`${usersPath}/login`, {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
@@ -102,36 +102,36 @@ export const usersSlice = createSlice({
       state.status = 'failed';
     },
 
-    [getUsers.pending]: (state) => {
-      state.status = 'loading';
-    },
-    [getUsers.fulfilled]: (state, action) => {
-      const users = action.payload.map((user) => {
-        const {
-          id: userId,
-          user_name: userUserName,
-          name: userName,
-          photo: userPhoto,
-          date_of_birth: userBirth,
-          role: userRole,
-          email: userEmail,
-        } = user;
-        return {
-          userName,
-          userId,
-          userUserName,
-          userPhoto,
-          userBirth,
-          userRole,
-          userEmail,
-        };
-      });
-      state.users = users;
-      state.status = 'success';
-    },
-    [getUsers.rejected]: (state) => {
-      state.status = 'failed';
-    },
+    // [getUsers.pending]: (state) => {
+    //   state.status = 'loading';
+    // },
+    // [getUsers.fulfilled]: (state, action) => {
+    //   const users = action.payload.map((user) => {
+    //     const {
+    //       id: userId,
+    //       user_name: userUserName,
+    //       name: userName,
+    //       photo: userPhoto,
+    //       date_of_birth: userBirth,
+    //       role: userRole,
+    //       email: userEmail,
+    //     } = user;
+    //     return {
+    //       userName,
+    //       userId,
+    //       userUserName,
+    //       userPhoto,
+    //       userBirth,
+    //       userRole,
+    //       userEmail,
+    //     };
+    //   });
+    //   state.users = users;
+    //   state.status = 'success';
+    // },
+    // [getUsers.rejected]: (state) => {
+    //   state.status = 'failed';
+    // },
   },
 });
 
