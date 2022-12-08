@@ -15,6 +15,7 @@ import Love from './components/team/Love';
 import Quality from './components/team/Quality';
 import Beauty from './components/team/Beauty';
 import Navbar from './components/navbar/Navbar';
+import CarUpdate from './components/cars/CarUpdate';
 
 function App() {
   return (
@@ -25,11 +26,16 @@ function App() {
           <Route path="/signup" element={<Signup />} />
         </Route>
         <Route path="/navbar" element={<Navbar />} />
+
         <Route path="/cars" element={<Cars />} />
-        <Route path="/cars/:id" element={<CarDetails />} />
         <Route path="/cars/create" element={<CarCreate />} />
+        <Route path="/cars/:id" element={<CarDetails />} />
+        <Route path="/cars/:id/update" element={<CarUpdate />} />
+
         <Route path="/edit" element={<EditUser />} />
+
         <Route path="/bookings" element={<Bookings />} />
+
         <Route path="/details" element={<Details />} />
         <Route path="/details/teams" element={<Teams />} />
         <Route path="/details/love" element={<Love />} />
