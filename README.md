@@ -1,70 +1,125 @@
-# Getting Started with Create React App
+# Rental cars
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is made for the Renting of cars. You can add, reserve and delete cars from our website! 
 
-## Available Scripts
+Our website features:
+ - Users can see details of all the cars
+ - Users can reserve cars that are booked
+ - Users can add cars 
+ - Users can remove cars 
+ - About us(dev team)
 
-In the project directory, you can run:
+## Project Documentation 📄
 
-### `npm start`
+- Live Demo [link](https://6391f321f275451d6914f18c--mellow-monstera-101e02.netlify.app/)
+- API Deployment [link]()
+- API GitHub Repo [link](git@github.com:nimplay/final-capstone-project.git)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Kanban Board:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Kanban Board [link](https://github.com/nimplay/final-capstone-project/projects/1)
 
-### `npm test`
+### Initial state of the Kanban Board:
+![Image](https://user-images.githubusercontent.com/53530780/206696807-2e6d4318-3b9e-41b7-ab0b-1f062c297df2.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### Team members: 3 (Williams Colmenares, Shahira Sadat, Nimrod Acosta)
+ 
+## Built With 🛠️
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+ - Programming Languages: HTML, CSS, JavaScript
+ - Frameworks: React, Redux and Bootstrap
+ - Code Editor: VS Code
+ 
+## Getting Started
+ 
+To get a local copy up and running follow these simple steps.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+> You can check if Git is installed by running the following command in the terminal.
+```
+$ git --version
+```
+> Likewise for Node installation.
+```
+$ node --version
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Setup
 
-### `npm run eject`
+Clone the repository using the GitHub link provided below.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Install
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+In the terminal, go to your file directory and run this command.
+```
+$ git clone git@github.com:shahira-sadat/final-capstone-project-frontend.git
+```
+### Usage
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Run locally
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Make your way to the correct directory by running this command:
 
-## Learn More
+```
+$ cd final-capstone-project-frontend
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Install the required dependencies to run the project with this command:
+```
+$ npm install
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Then run it in your browser with this command:
 
-### Code Splitting
+```
+$ npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Kindly modify the files as needed.
 
-### Analyzing the Bundle Size
+### Run tests
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+To run tests, please run this command
+```
+$ npm run test
+```
+## Authors
 
-### Making a Progressive Web App
+👤 ** Nimrod Acosta **
+- GitHub: [nimplay](https://github.com/nimplay)
+- Twitter: [NimrodAcosta](https://twitter.com/NimrodAcosta)
+- LinkedIn: [nimrod-acosta](https://www.linkedin.com/in/nimrod-acosta-734330169/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+👤 *Shahira Sadat*👩🏻‍💻
+- GitHub: [Shahira Sadat](https://github.com/shahira-sadat)
+- Twitter: [Shahira Sadat](https://twitter.com/SadatShahira)
+- Linkedin: [Shahira Sadat](https://www.linkedin.com/in/shahira-sadat-49b402199)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+👤 **Williams Colmenares**
+- GitHub: [@williamscch](https://github.com/williamscch)
+- Twitter: [@wdavidcch](https://twitter.com/wdavidcch)
+- LinkedIn: [Williams Colmenares on LinkedIn](https://www.linkedin.com/in/williamscolmenaresch/)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 🤝 Contributing
 
-### `npm run build` fails to minify
+Contributions, issues, and feature requests are welcome!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Feel free to check the [issues page](../../issues/).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+- [Microverse](https://www.microverse.org/)
+- Original design idea by [Murat Korkmaz on Behance](https://www.behance.net/muratk)
+- [FontAwesome](https://fontawesome.com/) for icons
+- [Unsplash](https://unsplash.com/) for images
+- Hat tip to anyone whose code was used
+- Our supportive families 😊
+
+
+## 📝 License
+This project is MIT licensed.
