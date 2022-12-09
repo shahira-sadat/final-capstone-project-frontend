@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { postBooking } from '../../redux/bookings/bookings';
 import Navbar from '../navbar/Navbar';
-import { getCars } from '../../redux/cars/cars';
 
 function CarCreate() {
   const [bookingDate, setBookingDate] = useState('');
@@ -13,18 +12,19 @@ function CarCreate() {
   const { id } = useParams();
   const idToUse = Number(id);
   const { auth } = useSelector((state) => state.users);
+  const { status } = useSelector((state) => state.bookings);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const idUser = JSON.parse(localStorage.getItem('auth')).id;
 
-  useEffect(() => {
-    setCar(idToUse);
-    dispatch(getCars());
-  }, [dispatch]);
+  if (status === 'success') {
+    navigate('/bookings');
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setCar(idToUse);
     const bookingData = {
       date: bookingDate,
       date_return: bookingDateReturn,
@@ -33,7 +33,6 @@ function CarCreate() {
       user_id: idUser,
     };
     dispatch(postBooking(bookingData));
-    navigate('/bookings');
   };
 
   const screen = (
@@ -92,12 +91,12 @@ function CarCreate() {
             Where you want to book this car?
             {' '}
             <select value={bookingCity} onChange={(e) => setBookingCity(e.target.value)} id="cities">
-              <option value="paris">Paris</option>
-              <option value="tokio">Tokio</option>
-              <option value="madrid">Madrid</option>
-              <option value="toronto">Toronto</option>
-              <option value="sidney">Sidney</option>
-              <option value="boston">Boston</option>
+              <option value="Paris">Paris</option>
+              <option value="Tokio">Tokio</option>
+              <option value="Madrid">Madrid</option>
+              <option value="Toronto">Toronto</option>
+              <option value="Sidney">Sidney</option>
+              <option value="Boston">Boston</option>
             </select>
           </label>
           <button type="submit" className="form-button button">

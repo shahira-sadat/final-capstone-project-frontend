@@ -1,16 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import CarCard from './CarCard';
 import '../../assets/styles/Cars.css';
 import Navbar from '../navbar/Navbar';
-import { getCars } from '../../redux/cars/cars';
 
 function Cars() {
-  const dispatch = useDispatch();
   const { cars } = useSelector((state) => state.cars);
-  const { auth } = useSelector((state) => state.users);
+  // const { auth } = useSelector((state) => state.users);
 
   const responsive = {
     superLargeDesktop: {
@@ -31,10 +29,6 @@ function Cars() {
       items: 1,
     },
   };
-
-  useEffect(() => {
-    dispatch(getCars());
-  }, [dispatch]);
 
   const screen = (
     <>
@@ -71,7 +65,7 @@ function Cars() {
     </>
   );
 
-  return auth ? screen : <h1>You are not logged</h1>;
+  return screen;
 }
 
 export default Cars;

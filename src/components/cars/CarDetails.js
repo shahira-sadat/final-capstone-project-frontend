@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router';
 import { NavLink, Outlet } from 'react-router-dom';
-import { getCars, deleteCar } from '../../redux/cars/cars';
+import { deleteCar } from '../../redux/cars/cars';
 import '../../assets/styles/CarDetails.css';
 import Navbar from '../navbar/Navbar';
 
@@ -10,14 +10,12 @@ function CarDetails() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { cars } = useSelector((state) => state.cars);
-  const { auth } = useSelector((state) => state.users);
+  const { status } = useSelector((state) => state.cars);
+  // const { auth } = useSelector((state) => state.users);
   const { role } = useSelector((state) => state.users);
   const { id } = useParams();
   const car = cars.find((car) => car.carId === Number(id));
-
-  useEffect(() => {
-    dispatch(getCars());
-  }, [dispatch]);
+  let screen;
 
   const handleDelete = (e, id) => {
     e.preventDefault();
@@ -25,24 +23,25 @@ function CarDetails() {
     dispatch(deleteCar(id));
   };
 
-  const screen = (
-    <>
-      <Navbar />
+  if (status === 'success') {
+    screen = (
+      <>
+        <Navbar />
 
-      <section className="car-details-section">
-        <div className="details-header">
-          <div className="details-title">
-            <h2>{car.carBrand}</h2>
-            <h3>{car.carName}</h3>
-          </div>
+        <section className="car-details-section">
+          <div className="details-header">
+            <div className="details-title">
+              <h2>{car.carBrand}</h2>
+              <h3>{car.carName}</h3>
+            </div>
 
-          {role === 'user' && (
-          <NavLink to="book" className="link">
-            <p>Book this Car</p>
-          </NavLink>
-          )}
+            {role === 'user' && (
+            <NavLink to="book" className="link">
+              <p>Book this Car</p>
+            </NavLink>
+            )}
 
-          {role === 'admin' && (
+            {role === 'admin' && (
             <div>
               {' '}
               <button
@@ -60,35 +59,43 @@ function CarDetails() {
                 Update Car
               </button>
             </div>
-          )}
-        </div>
-
-        <div className="details-img">
-          <img src={car.carImage} alt="car-img" />
-        </div>
-
-        <div className="details-footer">
-          <div>
-            <p>
-              Color Available:
-              {' '}
-              {car.carColor}
-              {' '}
-            </p>
-            <h3>
-              Price per Day
-              {' '}
-              {car.carPrice}
-              $
-            </h3>
+            )}
           </div>
-        </div>
-        <Outlet />
-      </section>
-    </>
-  );
 
-  return auth ? screen : <h1>You are not logged</h1>;
+          <div className="details-img">
+            <img src={car.carImage} alt="car-img" />
+          </div>
+
+          <div className="details-footer">
+            <div>
+              <p>
+                Color Available:
+                {' '}
+                {car.carColor}
+                {' '}
+              </p>
+              <h3>
+                Price per Day
+                {' '}
+                {car.carPrice}
+                $
+              </h3>
+            </div>
+          </div>
+          <Outlet />
+        </section>
+      </>
+    );
+  } else {
+    screen = (
+      <h3>
+        {status}
+        ...
+      </h3>
+    );
+  }
+
+  return screen;
 }
 
 export default CarDetails;
