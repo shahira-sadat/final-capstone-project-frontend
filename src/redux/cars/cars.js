@@ -47,7 +47,6 @@ export const postCar = createAsyncThunk('cars/postCar', async (carData) => {
   });
 });
 export const updateCar = createAsyncThunk('cars/updateCar', async (carData) => {
-  console.log(carData);
   await fetch(`${carsPath}/${carData.id}`, {
     method: 'PUT',
     headers: {
