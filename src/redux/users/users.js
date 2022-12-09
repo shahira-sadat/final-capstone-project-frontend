@@ -36,8 +36,6 @@ export const usersSlice = createSlice({
   name: 'users',
   initialState: {
     users: [],
-    auth: false,
-    role: null,
     status: null,
   },
   reducers: {},
@@ -50,6 +48,8 @@ export const usersSlice = createSlice({
         state.status = 'success';
       } else {
         state.status = 'error';
+        state.role = null;
+        state.auth = null;
       }
     },
     [logInUser.pending]: (state) => {
@@ -58,15 +58,8 @@ export const usersSlice = createSlice({
     [logInUser.rejected]: (state) => {
       state.status = 'failed';
     },
-    [signUpUser.fulfilled]: (state, action) => {
-      if (action.payload.status === 200) {
-        // state.users = action.payload;
-        // state.auth = true;
-        // state.role = action.payload.user.role;
-        state.status = 'success';
-      } else {
-        state.status = 'error';
-      }
+    [signUpUser.fulfilled]: (state) => {
+      state.status = 'success';
     },
     [signUpUser.pending]: (state) => {
       state.status = 'loading';
@@ -77,6 +70,6 @@ export const usersSlice = createSlice({
   },
 });
 
-export const { setAuth, setRole } = usersSlice.actions;
+export const { setAuth, setRole, setId } = usersSlice.actions;
 
 export default usersSlice.reducer;

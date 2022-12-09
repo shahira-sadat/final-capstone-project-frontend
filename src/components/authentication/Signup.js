@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { signUpUser } from '../../redux/users/users';
 
 function Signup() {
   const dispatch = useDispatch();
-  // const authenticated = false; // useSelector((state) => state.signup.authenticated);
+  const navigate = useNavigate();
+  const { status } = useSelector((state) => state.users);
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -14,13 +15,11 @@ function Signup() {
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
 
-  // const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   if (authenticated) {
-  //     navigate('/login');
-  //   }
-  // }, [navigate, authenticated]);
+  useEffect(() => {
+    if (status === 'success') {
+      setTimeout(() => { navigate('/login'); }, 3000);
+    }
+  }, [navigate, status]);
 
   const state = {
     user: {
@@ -41,6 +40,8 @@ function Signup() {
 
   return (
     <form className="form-container signup" onSubmit={submitHandler}>
+      {status === 'loading' && (<h3>Loading</h3>)}
+      {status === 'success' && (<h3>User created successfully</h3>)}
       <input
         type="text"
         placeholder="Create an Username"

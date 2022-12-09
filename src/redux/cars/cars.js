@@ -17,18 +17,18 @@ export const getCars = createAsyncThunk('cars/getCars', async () => {
 });
 
 export const deleteCar = createAsyncThunk('cars/deleteCar', async (id) => {
-  await fetch(`${carsPath}/${id}`, {
-    method: 'DELETE',
-    headers: {
-      'content-type': 'application/json',
-      accept: 'application/json',
-    },
-  }).then((response) => {
-    if (response.ok) {
-      return response.json();
-    }
-    throw new Error('Something went wrong');
-  });
+  try {
+    const response = await fetch(`${carsPath}/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json',
+        accept: 'application/json',
+      },
+    });
+    return response.ok ? id : null;
+  } catch (e) {
+    return e.errors;
+  }
 });
 
 export const postCar = createAsyncThunk('cars/postCar', async (carData) => {
@@ -46,8 +46,9 @@ export const postCar = createAsyncThunk('cars/postCar', async (carData) => {
     throw new Error('Something went wrong');
   });
 });
-export const updateCar = createAsyncThunk('cars/updateCar', async (carData, id) => {
-  await fetch(`${carsPath}/${id}`, {
+export const updateCar = createAsyncThunk('cars/updateCar', async (carData) => {
+  console.log(carData);
+  await fetch(`${carsPath}/${carData.id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -67,62 +68,81 @@ export const carsSlice = createSlice({
   initialState: {
     cars: [],
     status: null,
+    postStatus: null,
   },
   reducers: {},
-  extraReducers: {
-    [deleteCar.fulfilled]: (state, action) => {
-      const newState = state.cars.filter((car) => car.id !== action.payload);
-      state.cars = newState;
-      state.status = 'success';
-    },
-    [deleteCar.pending]: (state) => {
-      state.status = 'loading';
-    },
-    [deleteCar.rejected]: (state) => {
-      state.status = 'failed';
-    },
-    [postCar.fulfilled]: (state, action) => {
-      state.cars = [...state.cars, action.payload];
-      state.status = 'success';
-    },
-    [postCar.pending]: (state) => {
-      state.status = 'loading';
-    },
-    [postCar.rejected]: (state) => {
-      state.status = 'failed';
-    },
-    [getCars.pending]: (state) => {
-      state.status = 'loading';
-    },
-    [getCars.fulfilled]: (state, action) => {
-      const cars = action.payload.map((car) => {
-        const {
-          id: carId,
-          car_name: carName,
-          image: carImage,
-          brand: carBrand,
-          color: carColor,
-          year: carYear,
-          price: carPrice,
-          booked: carBooked,
-        } = car;
-        return {
-          carId,
-          carName,
-          carImage,
-          carBrand,
-          carColor,
-          carYear,
-          carPrice,
-          carBooked,
-        };
-      });
-      state.cars = cars;
-      state.status = 'success';
-    },
-    [getCars.rejected]: (state) => {
-      state.status = 'failed';
-    },
+  extraReducers: (builder) => {
+    builder.addCase(deleteCar.fulfilled, (state, action) => ({
+      ...state,
+      status: 'success',
+      cars: state.cars.filter((car) => car.id !== action.payload),
+    }));
+    builder.addCase(deleteCar.pending, (state) => ({
+      ...state,
+      status: 'loading',
+    }));
+    builder.addCase(deleteCar.rejected, (state) => ({
+      ...state,
+      status: 'failed',
+    }));
+    builder.addCase(postCar.fulfilled, (state, action) => ({
+      ...state,
+      postStatus: 'success',
+      cars: [...state.cars, action.payload],
+    }));
+    builder.addCase(postCar.pending, (state) => ({
+      ...state,
+      status: 'loading',
+    }));
+    builder.addCase(postCar.rejected, (state) => ({
+      ...state,
+      status: 'failed',
+    }));
+    builder.addCase(getCars.fulfilled, (state, action) => ({
+      ...state,
+      status: 'success',
+      cars: action.payload,
+    }));
+    builder.addCase(getCars.pending, (state) => ({
+      ...state,
+      status: 'loading',
+    }));
+    builder.addCase(getCars.rejected, (state) => ({
+      ...state,
+      status: 'failed',
+    }));
+    // [getCars.pending]: (state) => {
+    //   state.status = 'loading';
+    // },
+    // [getCars.fulfilled]: (state, action) => {
+    //   const cars = action.payload.map((car) => {
+    //     const {
+    //       id: carId,
+    //       car_name: carName,
+    //       image: carImage,
+    //       brand: carBrand,
+    //       color: carColor,
+    //       year: carYear,
+    //       price: carPrice,
+    //       booked: carBooked,
+    //     } = car;
+    //     return {
+    //       carId,
+    //       carName,
+    //       carImage,
+    //       carBrand,
+    //       carColor,
+    //       carYear,
+    //       carPrice,
+    //       carBooked,
+    //     };
+    //   });
+    //   state.cars = cars;
+    //   state.status = 'success';
+    // },
+    // [getCars.rejected]: (state) => {
+    //   state.status = 'failed';
+    // },
   },
 });
 

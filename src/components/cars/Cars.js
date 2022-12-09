@@ -1,16 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import CarCard from './CarCard';
 import '../../assets/styles/Cars.css';
 import Navbar from '../navbar/Navbar';
-import { getCars } from '../../redux/cars/cars';
 
 function Cars() {
-  const dispatch = useDispatch();
   const { cars } = useSelector((state) => state.cars);
-  const { auth } = useSelector((state) => state.users);
 
   const responsive = {
     superLargeDesktop: {
@@ -32,10 +29,6 @@ function Cars() {
     },
   };
 
-  useEffect(() => {
-    dispatch(getCars());
-  }, [dispatch]);
-
   const screen = (
     <>
       <Navbar />
@@ -53,16 +46,15 @@ function Cars() {
           removeArrowOnDeviceType={['tablet', 'mobile']}
         >
           {cars.map((car) => (
-            <div key={car.carId} className="car-card">
+            <div key={car.id} className="car-card">
               <CarCard
-                key={car.carId}
-                id={car.carId}
-                img={car.carImage}
-                name={car.carName}
-                carBrand={car.carBrand}
-                carPrice={car.carPrice}
-                carColor={car.carColor}
-                carBooked={car.carBooked}
+                id={car.id}
+                img={car.image}
+                name={car.car_name}
+                brand={car.brand}
+                price={car.price}
+                color={car.color}
+                booked={car.booked}
               />
             </div>
           ))}
@@ -71,7 +63,7 @@ function Cars() {
     </>
   );
 
-  return auth ? screen : <h1>You are not logged</h1>;
+  return screen;
 }
 
 export default Cars;

@@ -8,7 +8,6 @@ function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const { status } = useSelector((state) => state.users);
-  const { auth } = useSelector((state) => state.users);
   const { users } = useSelector((state) => state.users);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -18,15 +17,15 @@ function Login() {
     password,
   };
 
+  if (users.length !== 0) {
+    setTimeout(() => { navigate('/cars'); }, 2000);
+    const { user } = users;
+    localStorage.setItem('user', JSON.stringify(user));
+  }
+
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(logInUser(state));
-
-    if (auth === true) {
-      const { user } = users;
-      localStorage.setItem('auth', JSON.stringify(user));
-      navigate('/cars');
-    }
   };
 
   return (
@@ -53,8 +52,10 @@ function Login() {
       <button type="submit" className="form-button button">
         Log In
       </button>
-      {status === 'error'
-      && <span>Wrong combination username and password</span>}
+      <h3>
+        {status}
+        ...
+      </h3>
     </form>
   );
 }
