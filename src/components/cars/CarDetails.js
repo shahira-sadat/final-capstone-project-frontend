@@ -9,13 +9,13 @@ import Navbar from '../navbar/Navbar';
 function CarDetails() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { id } = useParams();
   const { cars } = useSelector((state) => state.cars);
   const { status } = useSelector((state) => state.cars);
-  // const { auth } = useSelector((state) => state.users);
-  const { role } = useSelector((state) => state.users);
-  const { id } = useParams();
   const car = cars.find((car) => car.carId === Number(id));
   let screen;
+  // const auth = localStorage.getItem('auth');
+  // const { role } = JSON.parse(localStorage.getItem('user'));
 
   const handleDelete = (e, id) => {
     e.preventDefault();
@@ -95,7 +95,12 @@ function CarDetails() {
     );
   }
 
-  return screen;
+  // if (auth) {
+  //   return screen;
+  // }
+  // navigate('/');
+
+  return localStorage.getItem('user') === null ? <NavLink to="/login" /> : screen;
 }
 
 export default CarDetails;
