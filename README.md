@@ -3,10 +3,10 @@
 
 <br />
 <p align="center">
-  "logo and title"
-  </a>
+Final Capstone Project
+</p>
 
-  <h1 align="center"><strong>Title</strong></h1>
+  <h1 align="center"><strong>"RENT A CAR"</strong></h1>
 
   <p align="center">
     This is the final capstone project for the Full Stack Developer Program at Microverse
@@ -126,7 +126,7 @@ To visit the live API site, please Click [here.](https://6391ee975ccecb1dc28f00a
 
 ## squema
 
-[](squema.jpeg)
+<img src="squema.jpeg">
 
 ## API Documentation:
 To see the API documentation, please Click [here.](https://cars-rental.onrender.com/api-docs/index.html)
@@ -199,13 +199,13 @@ This project is [MIT](./LICENSE) licensed.
 =======
 # Rental cars
 
-This project is made for the Renting of cars. You can add, reserve and delete cars from our website! 
+This project is made for the Renting of cars. You can add, reserve and delete cars from our website!
 
 Our website features:
  - Users can see details of all the cars
  - Users can reserve cars that are booked
- - Users can add cars 
- - Users can remove cars 
+ - Users can add cars
+ - Users can remove cars
  - About us(dev team)
 
 ## Project Documentation 📄
@@ -223,15 +223,15 @@ Our website features:
 
 
 ### Team members: 3 (Williams Colmenares, Shahira Sadat, Nimrod Acosta)
- 
+
 ## Built With 🛠️
 
  - Programming Languages: HTML, CSS, JavaScript
  - Frameworks: React, Redux and Bootstrap
  - Code Editor: VS Code
- 
+
 ## Getting Started
- 
+
 To get a local copy up and running follow these simple steps.
 
 > You can check if Git is installed by running the following command in the terminal.
