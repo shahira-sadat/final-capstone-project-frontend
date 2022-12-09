@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { postCar, getCars } from '../../redux/cars/cars';
 import '../../assets/styles/CarCreate.css';
 import Navbar from '../navbar/Navbar';
@@ -11,10 +12,11 @@ function CarCreate() {
   const [carYear, setCarYear] = useState('');
   const [carPrice, setCarPrice] = useState('');
   const [carImage, setCarImage] = useState('');
-  const [message, setMessage] = useState('');
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { status } = useSelector((state) => state.cars);
+  const { postStatus } = useSelector((state) => state.cars);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,9 +29,12 @@ function CarCreate() {
       image: carImage,
     };
     dispatch(postCar(carData));
-    if (status === 'success') {
-      setMessage(<h3>Car Created Successfully</h3>);
-      dispatch(getCars());
+    dispatch(getCars());
+  };
+
+  const handleRedirect = () => {
+    if (status === 'success' && postStatus === 'success') {
+      navigate('/cars');
     }
   };
 
@@ -38,7 +43,13 @@ function CarCreate() {
       <Navbar />
       <section className="create-section">
         <h1>Create a Car </h1>
-        <form className="form-container" onSubmit={handleSubmit}>
+        <form
+          className="form-container"
+          onSubmit={(e) => {
+            handleSubmit(e);
+            setTimeout(() => handleRedirect(), 3000);
+          }}
+        >
           <input
             type="text"
             placeholder="Brand"
@@ -97,7 +108,6 @@ function CarCreate() {
             Create Car
           </button>
         </form>
-        {message}
       </section>
     </>
   );

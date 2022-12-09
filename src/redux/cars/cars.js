@@ -68,6 +68,7 @@ export const carsSlice = createSlice({
   initialState: {
     cars: [],
     status: null,
+    postStatus: null,
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -86,7 +87,7 @@ export const carsSlice = createSlice({
     }));
     builder.addCase(postCar.fulfilled, (state, action) => ({
       ...state,
-      status: 'success',
+      postStatus: 'success',
       cars: [...state.cars, action.payload],
     }));
     builder.addCase(postCar.pending, (state) => ({
