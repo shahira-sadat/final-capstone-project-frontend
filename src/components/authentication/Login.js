@@ -8,7 +8,6 @@ function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const { status } = useSelector((state) => state.users);
-  const { auth } = useSelector((state) => state.users);
   const { users } = useSelector((state) => state.users);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -18,10 +17,11 @@ function Login() {
     password,
   };
 
-  if (auth === true) {
+  if (users.length !== 0) {
     setTimeout(() => { navigate('/cars'); }, 2000);
     const { user } = users;
-    localStorage.setItem('auth', JSON.stringify(user));
+    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('auth', true);
   }
 
   const submitHandler = (e) => {

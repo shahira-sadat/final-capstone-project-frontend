@@ -36,9 +36,6 @@ export const usersSlice = createSlice({
   name: 'users',
   initialState: {
     users: [],
-    auth: false,
-    role: null,
-    id: null,
     status: null,
   },
   reducers: {},
