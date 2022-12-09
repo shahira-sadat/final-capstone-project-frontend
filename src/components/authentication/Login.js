@@ -21,7 +21,6 @@ function Login() {
     setTimeout(() => { navigate('/cars'); }, 2000);
     const { user } = users;
     localStorage.setItem('user', JSON.stringify(user));
-    localStorage.setItem('auth', true);
   }
 
   const submitHandler = (e) => {
