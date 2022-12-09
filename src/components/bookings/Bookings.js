@@ -13,7 +13,7 @@ function Bookings() {
   useEffect(() => {
     dispatch(getBookings(idUser));
     dispatch(getCars());
-  }, [dispatch]);
+  }, [dispatch, idUser]);
 
   return (
     <>
