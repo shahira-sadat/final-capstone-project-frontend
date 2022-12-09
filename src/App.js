@@ -17,8 +17,22 @@ import Beauty from './components/team/Beauty';
 import Navbar from './components/navbar/Navbar';
 import CarUpdate from './components/cars/CarUpdate';
 import BookingCreate from './components/bookings/BookingCreate';
+import PageNotFound from './components/authentication/PageNotFound';
 
 function App() {
+  if (localStorage.getItem('user') === null) {
+    return (
+      <Router>
+        <Routes>
+          <Route path="/" element={<Splash />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+          </Route>
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </Router>
+    );
+  }
   return (
     <Router>
       <Routes>
