@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { postCar } from '../../redux/cars/cars';
+import { postCar, getCars } from '../../redux/cars/cars';
 import '../../assets/styles/CarCreate.css';
 import Navbar from '../navbar/Navbar';
 
@@ -12,10 +11,10 @@ function CarCreate() {
   const [carYear, setCarYear] = useState('');
   const [carPrice, setCarPrice] = useState('');
   const [carImage, setCarImage] = useState('');
-  const { auth } = useSelector((state) => state.users);
+  const [message, setMessage] = useState('');
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const { status } = useSelector((state) => state.cars);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,7 +27,10 @@ function CarCreate() {
       image: carImage,
     };
     dispatch(postCar(carData));
-    navigate('/cars');
+    if (status === 'success') {
+      setMessage(<h3>Car Created Successfully</h3>);
+      dispatch(getCars());
+    }
   };
 
   const screen = (
@@ -95,11 +97,12 @@ function CarCreate() {
             Create Car
           </button>
         </form>
+        {message}
       </section>
     </>
   );
 
-  return auth ? screen : <h1>You are not logged</h1>;
+  return screen;
 }
 
 export default CarCreate;

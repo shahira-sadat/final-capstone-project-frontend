@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../assets/styles/Navbar.css';
-import { useSelector } from 'react-redux';
 
 function Navbar() {
-  const { role } = useSelector((state) => state.users);
+  const { role } = JSON.parse(localStorage.getItem('user'));
   return (
     <>
       <input type="checkbox" className="toggler" />

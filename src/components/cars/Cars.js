@@ -8,7 +8,6 @@ import Navbar from '../navbar/Navbar';
 
 function Cars() {
   const { cars } = useSelector((state) => state.cars);
-  // const { auth } = useSelector((state) => state.users);
 
   const responsive = {
     superLargeDesktop: {
@@ -47,16 +46,15 @@ function Cars() {
           removeArrowOnDeviceType={['tablet', 'mobile']}
         >
           {cars.map((car) => (
-            <div key={car.carId} className="car-card">
+            <div key={car.id} className="car-card">
               <CarCard
-                key={car.carId}
-                id={car.carId}
-                img={car.carImage}
-                name={car.carName}
-                carBrand={car.carBrand}
-                carPrice={car.carPrice}
-                carColor={car.carColor}
-                carBooked={car.carBooked}
+                id={car.id}
+                img={car.image}
+                name={car.car_name}
+                brand={car.brand}
+                price={car.price}
+                color={car.color}
+                booked={car.booked}
               />
             </div>
           ))}
