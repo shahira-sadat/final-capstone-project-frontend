@@ -13,7 +13,7 @@ Our website features:
 
 - Live Demo [link](https://6391f321f275451d6914f18c--mellow-monstera-101e02.netlify.app/)
 - API Deployment [link]()
-- API GitHub Repo [link](git@github.com:nimplay/final-capstone-project.git)
+- API GitHub Repo [link](https://github.com/nimplay/final-capstone-project)
 
 ## Kanban Board:
 
