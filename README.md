@@ -3,10 +3,10 @@
 
 <br />
 <p align="center">
-  "RENT A CAR"
-  </a>
+Final Capstone Project
+</p>
 
-  <h1 align="center"><strong>Final Capstone Project</strong></h1>
+  <h1 align="center"><strong>"RENT A CAR"</strong></h1>
 
   <p align="center">
     This is the final capstone project for the Full Stack Developer Program at Microverse
