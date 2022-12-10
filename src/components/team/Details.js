@@ -9,7 +9,7 @@ import carimage4 from '../../assets/img/5.jpg';
 import carimage5 from '../../assets/img/7.jpg';
 import Navbar from '../navbar/Navbar';
 
-function Details() {
+const Details = () => {
   const { auth } = useSelector((state) => state.users);
 
   const screen = (
@@ -66,6 +66,6 @@ function Details() {
   );
 
   return auth ? screen : <h1>You are not logged</h1>;
-}
+};
 
 export default Details;

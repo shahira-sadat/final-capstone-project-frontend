@@ -19,7 +19,7 @@ import CarUpdate from './components/cars/CarUpdate';
 import BookingCreate from './components/bookings/BookingCreate';
 import PageNotFound from './components/authentication/PageNotFound';
 
-function App() {
+const App = () => {
   if (localStorage.getItem('user') === null) {
     return (
       <Router>
@@ -63,6 +63,6 @@ function App() {
       </Routes>
     </Router>
   );
-}
+};
 
 export default App;

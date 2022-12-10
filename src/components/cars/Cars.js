@@ -6,12 +6,11 @@ import CarCard from './CarCard';
 import '../../assets/styles/Cars.css';
 import Navbar from '../navbar/Navbar';
 
-function Cars() {
+const Cars = () => {
   const { cars } = useSelector((state) => state.cars);
 
   const responsive = {
     superLargeDesktop: {
-      // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
       items: 5,
     },
@@ -64,6 +63,6 @@ function Cars() {
   );
 
   return screen;
-}
+};
 
 export default Cars;

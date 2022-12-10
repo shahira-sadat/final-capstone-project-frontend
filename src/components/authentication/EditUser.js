@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Navbar from '../navbar/Navbar';
 import '../../assets/styles/EditUser.css';
 
-function EditUser() {
+const EditUser = () => {
   const authenticated = true; // useSelector((state) => state.signup.authenticated);
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');
@@ -101,6 +101,6 @@ function EditUser() {
       </div>
     </>
   );
-}
+};
 
 export default EditUser;

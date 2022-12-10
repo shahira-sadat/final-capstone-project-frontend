@@ -5,7 +5,7 @@ import { updateCar, getCars } from '../../redux/cars/cars';
 import '../../assets/styles/CarCreate.css';
 import Navbar from '../navbar/Navbar';
 
-function CarUpdate() {
+const CarUpdate = () => {
   const [carName, setCarName] = useState('');
   const [carBrand, setCarBrand] = useState('');
   const [carColor, setCarColor] = useState('');
@@ -114,6 +114,6 @@ function CarUpdate() {
   );
 
   return auth ? screen : <h1>You are not logged</h1>;
-}
+};
 
 export default CarUpdate;

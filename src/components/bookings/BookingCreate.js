@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { postBooking } from '../../redux/bookings/bookings';
 import Navbar from '../navbar/Navbar';
 
-function CarCreate() {
+const CarCreate = () => {
   const [bookingDate, setBookingDate] = useState('');
   const [bookingDateReturn, setBookingDateReturn] = useState('');
   const [bookingCity, setBookingCity] = useState('');
@@ -108,6 +108,6 @@ function CarCreate() {
   );
 
   return auth ? screen : <h1>You are not logged</h1>;
-}
+};
 
 export default CarCreate;

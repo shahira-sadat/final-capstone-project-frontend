@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import '../../assets/styles/Splash.css';
 
-function Splash() {
+const Splash = () => {
   const location = useLocation();
   return (
     <div className="welcome">
@@ -33,6 +33,6 @@ function Splash() {
       <Outlet />
     </div>
   );
-}
+};
 
 export default Splash;

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logInUser } from '../../redux/users/users';
 import '../../assets/styles/Login.css';
 
-function Login() {
+const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const { status } = useSelector((state) => state.users);
@@ -58,6 +58,6 @@ function Login() {
       </h3>
     </form>
   );
-}
+};
 
 export default Login;

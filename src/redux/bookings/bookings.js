@@ -11,7 +11,6 @@ export const getBookings = createAsyncThunk(
         headers: {
           'content-type': 'application/json',
           accept: 'application/json',
-          // Authorization: token,
         },
       },
     );
@@ -19,27 +18,6 @@ export const getBookings = createAsyncThunk(
     return bookings;
   },
 );
-
-// export const deleteBooking = createAsyncThunk(
-//   'bookings/deleteBooking',
-//   async (id) => {
-//     await fetch(
-//       `https://cars-rental.onrender.com/api/v1/users/${id}/bookings`,
-//       {
-//         method: 'DELETE',
-//         headers: {
-//           'content-type': 'application/json',
-//           accept: 'application/json',
-//         },
-//       },
-//     ).then((response) => {
-//       if (response.ok) {
-//         return response.json();
-//       }
-//       throw new Error('Something went wrong');
-//     });
-//   },
-// );
 
 export const postBooking = createAsyncThunk(
   'bookings/postBooking',
@@ -71,19 +49,6 @@ export const bookingsSlice = createSlice({
   },
   reducers: {},
   extraReducers: {
-    // [deleteBooking.fulfilled]: (state, action) => {
-    //   const newState = state.bookings.filter(
-    //     (Booking) => Booking.id !== action.payload,
-    //   );
-    //   state.bookings = newState;
-    //   state.status = 'success';
-    // },
-    // [deleteBooking.pending]: (state) => {
-    //   state.status = 'loading';
-    // },
-    // [deleteBooking.rejected]: (state) => {
-    //   state.status = 'failed';
-    // },
     [postBooking.fulfilled]: (state, action) => {
       state.bookings = [...state.bookings, action.payload];
       state.status = 'success';

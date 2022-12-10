@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../../assets/styles/team.css';
 
-function TeamCard(props) {
+const TeamCard = (props) => {
   const {
     name, bio, backBio, image, github, twitter, linkedin,
   } = props;
@@ -52,7 +52,7 @@ function TeamCard(props) {
       </div>
     </div>
   );
-}
+};
 
 export default TeamCard;
 

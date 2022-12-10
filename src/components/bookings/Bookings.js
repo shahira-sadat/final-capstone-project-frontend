@@ -4,7 +4,7 @@ import Navbar from '../navbar/Navbar';
 import { getBookings } from '../../redux/bookings/bookings';
 import { getCars } from '../../redux/cars/cars';
 
-function Bookings() {
+const Bookings = () => {
   const dispatch = useDispatch();
   const { bookings } = useSelector((state) => state.bookings);
   const { cars } = useSelector((state) => state.cars);
@@ -65,5 +65,5 @@ function Bookings() {
       </section>
     </>
   );
-}
+};
 export default Bookings;

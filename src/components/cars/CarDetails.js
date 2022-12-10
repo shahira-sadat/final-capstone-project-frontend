@@ -6,7 +6,7 @@ import { deleteCar } from '../../redux/cars/cars';
 import '../../assets/styles/CarDetails.css';
 import Navbar from '../navbar/Navbar';
 
-function CarDetails() {
+const CarDetails = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
@@ -96,6 +96,6 @@ function CarDetails() {
     );
   }
   return screen;
-}
+};
 
 export default CarDetails;
