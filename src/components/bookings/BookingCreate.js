@@ -11,12 +11,11 @@ const CarCreate = () => {
   const [bookingCar, setCar] = useState('');
   const { id } = useParams();
   const idToUse = Number(id);
-  const { auth } = useSelector((state) => state.users);
   const { status } = useSelector((state) => state.bookings);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const idUser = JSON.parse(localStorage.getItem('auth')).id;
+  const idUser = JSON.parse(localStorage.getItem('user')).id;
 
   if (status === 'success') {
     navigate('/bookings');
@@ -71,22 +70,6 @@ const CarCreate = () => {
             />
           </label>
 
-          {/* <label htmlFor="cities">
-            Where you want to book this car?
-            {' '}
-            <select value={bookingCity} onChange={(e) =>
-              setBookingCity(e.target.value)} id="cities">
-              {cars.map((car) => (
-                <option key={car.carId} value={cars.carId}>
-                  {car.carBrand}
-                  ,
-                  {' '}
-                  {car.carName}
-                </option>
-              ))}
-            </select>
-          </label> */}
-
           <label htmlFor="cities">
             Where you want to book this car?
             {' '}
@@ -107,7 +90,7 @@ const CarCreate = () => {
     </>
   );
 
-  return auth ? screen : <h1>You are not logged</h1>;
+  return screen;
 };
 
 export default CarCreate;
