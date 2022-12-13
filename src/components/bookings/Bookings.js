@@ -20,7 +20,7 @@ const Bookings = () => {
       <section className="bookings">
         <h1>BOOKINGS</h1>
         <table className="bookings-list">
-          <thead>
+          <thead className="thead">
             <tr>
               <th>CAR</th>
               <th>COLOR</th>
@@ -31,7 +31,7 @@ const Bookings = () => {
               <th>DAILY FEE</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="thead">
             {bookings.map((booking) => (
               <tr key={booking.bookingId}>
                 <td>
