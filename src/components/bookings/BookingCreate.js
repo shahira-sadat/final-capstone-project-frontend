@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { postBooking } from '../../redux/bookings/bookings';
-import Navbar from '../navbar/Navbar';
+import '../../assets/styles/CarDetails.css';
 
 const CarCreate = () => {
   const [bookingDate, setBookingDate] = useState('');
@@ -35,59 +35,58 @@ const CarCreate = () => {
   };
 
   const screen = (
-    <>
-      <Navbar />
-      <section>
-        <h1>Book this Car </h1>
-        <form className="form-container" onSubmit={handleSubmit}>
-          <label htmlFor="date">
-            From
-            {' '}
-            <input
-              id="date"
-              type="date"
-              placeholder="Brand"
-              name="bookingDateReturn"
-              className="form-input"
-              value={bookingDateReturn}
-              onChange={(e) => setBookingDateReturn(e.target.value)}
-              required
-            />
-          </label>
+    <form onSubmit={handleSubmit}>
+      <div className="label">
+        <span>From</span>
+        <input
+          id="date"
+          type="date"
+          placeholder="Brand"
+          name="bookingDateReturn"
+          className="form-input"
+          value={bookingDateReturn}
+          onChange={(e) => setBookingDateReturn(e.target.value)}
+          required
+        />
+      </div>
 
-          <label htmlFor="date-return">
-            To:
-            {' '}
-            <input
-              id="date-return"
-              type="date"
-              placeholder="Model"
-              name="bookingDate"
-              className="form-input"
-              value={bookingDate}
-              onChange={(e) => setBookingDate(e.target.value)}
-              required
-            />
-          </label>
+      <div className="label">
+        <label htmlFor="date-return">
+          To:
+          {' '}
+          <input
+            id="date-return"
+            type="date"
+            placeholder="Model"
+            name="bookingDate"
+            className="form-input"
+            value={bookingDate}
+            onChange={(e) => setBookingDate(e.target.value)}
+            required
+          />
+        </label>
+      </div>
 
-          <label htmlFor="cities">
-            Where you want to book this car?
-            {' '}
-            <select value={bookingCity} onChange={(e) => setBookingCity(e.target.value)} id="cities">
-              <option value="Paris">Paris</option>
-              <option value="Tokio">Tokio</option>
-              <option value="Madrid">Madrid</option>
-              <option value="Toronto">Toronto</option>
-              <option value="Sidney">Sidney</option>
-              <option value="Boston">Boston</option>
-            </select>
-          </label>
-          <button type="submit" className="form-button button">
-            Book
-          </button>
-        </form>
-      </section>
-    </>
+      <label htmlFor="cities">
+        Where you want to book this car?
+        {' '}
+        <select
+          value={bookingCity}
+          onChange={(e) => setBookingCity(e.target.value)}
+          id="cities"
+        >
+          <option value="Paris">Paris</option>
+          <option value="Tokio">Tokio</option>
+          <option value="Madrid">Madrid</option>
+          <option value="Toronto">Toronto</option>
+          <option value="Sidney">Sidney</option>
+          <option value="Boston">Boston</option>
+        </select>
+      </label>
+      <button type="submit" className="form-button button">
+        Book
+      </button>
+    </form>
   );
 
   return screen;
