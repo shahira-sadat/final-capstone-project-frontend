@@ -20,7 +20,7 @@ const Teams = () => {
                   id={team.id}
                   name={team.name}
                   bio={team.bio}
-                  backbio={team.backbio}
+                  backBio={team.backBio}
                   image={team.image}
                   github={team.github}
                   twitter={team.twitter}
