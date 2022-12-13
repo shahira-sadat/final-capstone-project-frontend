@@ -18,33 +18,53 @@
   padding: 0 1rem;
 }
 
-.details-buttons {
+.price {
+  background-color: var(--lime);
+  color: var(--white);
+  font-weight: 700;
+  text-shadow: 1px 1px 2px var(--black);
+  border-radius: 5em;
+  padding: 3px;
+}
+
+.details-buttons-form {
+  padding: 0 1rem;
+}
+
+.book-form {
+  width: 70%;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-}
-
-.delete {
-  background-color: var(--orange) !important;
-}
-
-.details-header button {
-  margin-left: auto;
-  height: 70%;
-}
-
-.details-footer {
-  display: flex;
-  margin-top: 3rem;
-}
-
-@media only screen and (min-width: 900px) {
-  .car-details-section {
-    flex-direction: row;
-  }
+  gap: 1rem;
 }
 
 .label {
   display: flex;
   flex-direction: column;
 }
+
+#cities {
+  background-color: var(--lime);
+  border-radius: 5em;
+  border: none;
+  color: var(--white);
+  font-weight: 700;
+  text-shadow: 1px 1px 2px var(--black);
+  padding: 0.5rem;
+}
+
+#cities:focus {
+  border: 4px solid var(--orange);
+}
+
+.details-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* @media only screen and (min-width: 900px) {
+  .car-details-section {
+    flex-direction: row;
+  }
+} */

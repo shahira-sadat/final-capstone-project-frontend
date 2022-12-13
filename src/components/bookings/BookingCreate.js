@@ -35,9 +35,9 @@ const CarCreate = () => {
   };
 
   const screen = (
-    <form onSubmit={handleSubmit}>
+    <form className="book-form" onSubmit={handleSubmit}>
       <div className="label">
-        <span>From</span>
+        <span>From:</span>
         <input
           id="date"
           type="date"
@@ -51,24 +51,21 @@ const CarCreate = () => {
       </div>
 
       <div className="label">
-        <label htmlFor="date-return">
-          To:
-          {' '}
-          <input
-            id="date-return"
-            type="date"
-            placeholder="Model"
-            name="bookingDate"
-            className="form-input"
-            value={bookingDate}
-            onChange={(e) => setBookingDate(e.target.value)}
-            required
-          />
-        </label>
+        <span>To:</span>
+        <input
+          id="date-return"
+          type="date"
+          placeholder="Model"
+          name="bookingDate"
+          className="form-input"
+          value={bookingDate}
+          onChange={(e) => setBookingDate(e.target.value)}
+          required
+        />
       </div>
 
       <label htmlFor="cities">
-        Where you want to book this car?
+        City:
         {' '}
         <select
           value={bookingCity}
