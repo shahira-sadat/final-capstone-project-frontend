@@ -2,18 +2,16 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Navbar from '../navbar/Navbar';
 import { getBookings } from '../../redux/bookings/bookings';
-import { getCars } from '../../redux/cars/cars';
 
 const Bookings = () => {
   const dispatch = useDispatch();
   const { bookings } = useSelector((state) => state.bookings);
   const { cars } = useSelector((state) => state.cars);
-  const idUser = JSON.parse(localStorage.getItem('auth')).id;
+  const { id } = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
-    dispatch(getBookings(idUser));
-    dispatch(getCars());
-  }, [dispatch, idUser]);
+    dispatch(getBookings(id));
+  }, [dispatch, id]);
 
   return (
     <>
@@ -24,17 +22,17 @@ const Bookings = () => {
           {bookings.map((booking) => (
             <li key={booking.bookingId}>
               <h1>
-                {cars.find((car) => car.carId === booking.bookingCarId).carBrand}
+                {cars.find((car) => car.id === booking.bookingCarId).brand}
                 ,
                 {' '}
-                {cars.find((car) => car.carId === booking.bookingCarId).carName}
+                {cars.find((car) => car.id === booking.bookingCarId).name}
               </h1>
               <h2>
                 {' '}
-                {cars.find((car) => car.carId === booking.bookingCarId).carColor}
+                {cars.find((car) => car.id === booking.bookingCarId).color}
                 ,
                 {' '}
-                {cars.find((car) => car.carId === booking.bookingCarId).carYear}
+                {cars.find((car) => car.id === booking.bookingCarId).year}
 
               </h2>
               <h3>
@@ -55,7 +53,7 @@ const Bookings = () => {
               <p>
                 Daily Fee:
                 {' '}
-                {cars.find((car) => car.carId === booking.bookingCarId).carPrice}
+                {cars.find((car) => car.id === booking.bookingCarId).price}
                 {' '}
                 $
               </p>
