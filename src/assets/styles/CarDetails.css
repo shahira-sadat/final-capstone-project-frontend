@@ -63,8 +63,17 @@
   gap: 2rem;
 }
 
-/* @media only screen and (min-width: 900px) {
+@media only screen and (max-width: 900px) {
   .car-details-section {
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 25% 25% 45%;
+    padding: 3rem 2rem;
+    place-content: center;
+    gap: 1rem;
   }
-} */
+
+  .book-form {
+    width: 100%; 
+  }
+}
