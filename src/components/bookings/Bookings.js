@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Navbar from '../navbar/Navbar';
 import { getBookings } from '../../redux/bookings/bookings';
+import '../../assets/styles/Bookings.css';
 
 const Bookings = () => {
   const dispatch = useDispatch();
@@ -16,50 +17,43 @@ const Bookings = () => {
   return (
     <>
       <Navbar />
-      <section>
-        <h1>These are all Your Bookings</h1>
-        <ul>
-          {bookings.map((booking) => (
-            <li key={booking.bookingId}>
-              <h1>
-                {cars.find((car) => car.id === booking.bookingCarId).brand}
-                ,
-                {' '}
-                {cars.find((car) => car.id === booking.bookingCarId).name}
-              </h1>
-              <h2>
-                {' '}
-                {cars.find((car) => car.id === booking.bookingCarId).color}
-                ,
-                {' '}
-                {cars.find((car) => car.id === booking.bookingCarId).year}
-
-              </h2>
-              <h3>
-                Booked in:
-                {' '}
-                {booking.bookingCity}
-              </h3>
-              <p>
-                From:
-                {' '}
-                {new Date(booking.bookingDate).toDateString()}
-              </p>
-              <p>
-                To:
-                {' '}
-                {new Date(booking.bookingDateReturn).toDateString()}
-              </p>
-              <p>
-                Daily Fee:
-                {' '}
-                {cars.find((car) => car.id === booking.bookingCarId).price}
-                {' '}
-                $
-              </p>
-            </li>
-          ))}
-        </ul>
+      <section className="bookings">
+        <h1>BOOKINGS</h1>
+        <table className="bookings-list">
+          <thead>
+            <tr>
+              <th>CAR</th>
+              <th>COLOR</th>
+              <th>YEAR</th>
+              <th>CITY</th>
+              <th>FROM</th>
+              <th>TO</th>
+              <th>DAILY FEE</th>
+            </tr>
+          </thead>
+          <tbody>
+            {bookings.map((booking) => (
+              <tr key={booking.bookingId}>
+                <td>
+                  {cars.find((car) => car.id === booking.bookingCarId).brand}
+                  ,
+                  {' '}
+                  {cars.find((car) => car.id === booking.bookingCarId).car_name}
+                </td>
+                <td>{cars.find((car) => car.id === booking.bookingCarId).color}</td>
+                <td>{cars.find((car) => car.id === booking.bookingCarId).year}</td>
+                <td>{booking.bookingCity}</td>
+                <td>{new Date(booking.bookingDate).toDateString()}</td>
+                <td>{new Date(booking.bookingDateReturn).toDateString()}</td>
+                <td>
+                  {cars.find((car) => car.id === booking.bookingCarId).price}
+                  {' '}
+                  $
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </section>
     </>
   );
