@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router';
-import { deleteCar } from '../../redux/cars/cars';
+import { deleteCar, getCars } from '../../redux/cars/cars';
 import '../../assets/styles/CarDetails.css';
 import Navbar from '../navbar/Navbar';
 import BookingCreate from '../bookings/BookingCreate';
@@ -19,6 +19,8 @@ const CarDetails = () => {
   const handleDelete = (e, id) => {
     e.preventDefault();
     dispatch(deleteCar(id));
+
+    setTimeout(() => dispatch(getCars()), 3000);
     if (status === 'success') {
       navigate('/cars');
     }
@@ -45,12 +47,17 @@ const CarDetails = () => {
                 {car.color}
                 {' '}
               </p>
-              <h3 className="price">
+              <h4>
                 Daily Fee:
                 {' '}
-                {car.price}
-                $
-              </h3>
+                <span className="price">
+                  {car.price}
+                  {' '}
+                  $
+                  {' '}
+                </span>
+              </h4>
+              {' '}
             </div>
           </div>
 
@@ -76,12 +83,12 @@ const CarDetails = () => {
             )}
 
             {role === 'user' && (
-            <>
-              {' '}
-              <h2>Book this Car </h2>
-              {' '}
-              <BookingCreate />
-            </>
+              <>
+                {' '}
+                <h2>Book this Car </h2>
+                {' '}
+                <BookingCreate />
+              </>
             )}
           </div>
         </section>
