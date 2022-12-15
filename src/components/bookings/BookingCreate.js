@@ -1,37 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
-import { postBooking } from '../../redux/bookings/bookings';
+import { useParams } from 'react-router-dom';
+import { postBooking, setStatus } from '../../redux/bookings/bookings';
 import '../../assets/styles/CarDetails.css';
 
-const CarCreate = () => {
+const BookingCreate = () => {
   const [bookingDate, setBookingDate] = useState('');
   const [bookingDateReturn, setBookingDateReturn] = useState('');
   const [bookingCity, setBookingCity] = useState('');
-  const [bookingCar, setCar] = useState('');
+  // const [bookingCar, setCar] = useState('');
   const { id } = useParams();
   const idToUse = Number(id);
   const { status } = useSelector((state) => state.bookings);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const idUser = JSON.parse(localStorage.getItem('user')).id;
+  let message = '';
+
+  useEffect(() => {
+    dispatch(setStatus());
+  });
 
   if (status === 'success') {
-    navigate('/bookings');
+    message = <h3>Booking Created</h3>;
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setCar(idToUse);
-    const bookingData = {
-      date: bookingDate,
-      date_return: bookingDateReturn,
-      city: bookingCity,
-      car_id: bookingCar,
-      user_id: idUser,
+    // setCar(idToUse);
+    const data = {
+      booking: {
+        date: bookingDate,
+        date_return: bookingDateReturn,
+        city: bookingCity,
+        car_id: idToUse,
+      },
+      user: {
+        user_id: idUser,
+      },
+
     };
-    dispatch(postBooking(bookingData));
+    dispatch(postBooking(data));
   };
 
   const screen = (
@@ -83,10 +92,11 @@ const CarCreate = () => {
       <button type="submit" className="form-button button">
         Book
       </button>
+      {message}
     </form>
   );
 
   return screen;
 };
 
-export default CarCreate;
+export default BookingCreate;
