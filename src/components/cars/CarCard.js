@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import '../../assets/styles/CarCard.css';
 
-function CarCard(props) {
+const CarCard = (props) => {
   const {
     id, img, name, brand, price, color, booked,
   } = props;
@@ -27,19 +27,6 @@ function CarCard(props) {
               {color}
             </p>
           </div>
-          {/* {!deleteCar && <p className="">{carType}</p>}
-          {reservation && (
-            <div className="">
-              <p>{reservationDate}</p>
-            </div>
-          )} */}
-          {/* {!reservation && !deleteCar && (
-            <p className="">
-              $
-              {price}
-              /day
-            </p>
-          )} */}
           <div className="car-price">
             <h4>
               {price}
@@ -53,7 +40,7 @@ function CarCard(props) {
       </div>
     </Link>
   );
-}
+};
 
 export default CarCard;
 
@@ -68,7 +55,5 @@ CarCard.propTypes = {
 };
 
 CarCard.defaultProps = {
-  // reservationDate: String(Date.now()),
   booked: false,
-  // deleteCar: false,
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../assets/styles/Navbar.css';
 
-function Navbar() {
+const Navbar = () => {
   const { role } = JSON.parse(localStorage.getItem('user'));
   return (
     <>
@@ -58,6 +58,6 @@ function Navbar() {
       </div>
     </>
   );
-}
+};
 
 export default Navbar;

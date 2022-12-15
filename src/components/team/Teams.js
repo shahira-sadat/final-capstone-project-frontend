@@ -4,7 +4,7 @@ import TeamCard from './TeamCard';
 import '../../assets/styles/team.css';
 import Navbar from '../navbar/Navbar';
 
-function Teams() {
+const Teams = () => {
   const { teams } = useSelector((state) => state.teams);
   return (
     <>
@@ -20,7 +20,7 @@ function Teams() {
                   id={team.id}
                   name={team.name}
                   bio={team.bio}
-                  backbio={team.backbio}
+                  backBio={team.backBio}
                   image={team.image}
                   github={team.github}
                   twitter={team.twitter}
@@ -33,6 +33,6 @@ function Teams() {
       </section>
     </>
   );
-}
+};
 
 export default Teams;

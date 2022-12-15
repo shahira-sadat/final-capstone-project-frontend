@@ -5,7 +5,7 @@ import { postCar, getCars } from '../../redux/cars/cars';
 import '../../assets/styles/CarCreate.css';
 import Navbar from '../navbar/Navbar';
 
-function CarCreate() {
+const CarCreate = () => {
   const [carName, setCarName] = useState('');
   const [carBrand, setCarBrand] = useState('');
   const [carColor, setCarColor] = useState('');
@@ -113,6 +113,6 @@ function CarCreate() {
   );
 
   return screen;
-}
+};
 
 export default CarCreate;

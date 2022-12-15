@@ -11,7 +11,6 @@ export const getBookings = createAsyncThunk(
         headers: {
           'content-type': 'application/json',
           accept: 'application/json',
-          // Authorization: token,
         },
       },
     );
@@ -20,17 +19,18 @@ export const getBookings = createAsyncThunk(
   },
 );
 
-// export const deleteBooking = createAsyncThunk(
-//   'bookings/deleteBooking',
-//   async (id) => {
+// export const postBooking = createAsyncThunk(
+//   'bookings/postBooking',
+//   async (data) => {
 //     await fetch(
-//       `https://cars-rental.onrender.com/api/v1/users/${id}/bookings`,
+//       `https://cars-rental.onrender.com/api/v1/users/${data.user.user_id}/bookings`,
 //       {
-//         method: 'DELETE',
+//         method: 'POST',
 //         headers: {
-//           'content-type': 'application/json',
+//           'Content-Type': 'application/json',
 //           accept: 'application/json',
 //         },
+//         body: JSON.stringify(data.booking),
 //       },
 //     ).then((response) => {
 //       if (response.ok) {
@@ -41,27 +41,19 @@ export const getBookings = createAsyncThunk(
 //   },
 // );
 
-export const postBooking = createAsyncThunk(
-  'bookings/postBooking',
-  async (bookingData) => {
-    await fetch(
-      `https://cars-rental.onrender.com/api/v1/users/${bookingData.user_id}/bookings`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          accept: 'application/json',
-        },
-        body: JSON.stringify(bookingData),
-      },
-    ).then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-      throw new Error('Something went wrong');
-    });
-  },
-);
+export const postBooking = createAsyncThunk('bookings/postBooking', async (data) => {
+  const response = await fetch(`https://cars-rental.onrender.com/api/v1/users/${data.user.user_id}/bookings`, {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      accept: 'application/json',
+      // Authorization: token,
+    },
+    body: JSON.stringify(data.booking),
+  });
+  const reservations = await response.json();
+  return reservations;
+});
 
 export const bookingsSlice = createSlice({
   name: 'bookings',
@@ -69,21 +61,12 @@ export const bookingsSlice = createSlice({
     bookings: [],
     status: null,
   },
-  reducers: {},
+  reducers: {
+    setStatus(state) {
+      state.status = null;
+    },
+  },
   extraReducers: {
-    // [deleteBooking.fulfilled]: (state, action) => {
-    //   const newState = state.bookings.filter(
-    //     (Booking) => Booking.id !== action.payload,
-    //   );
-    //   state.bookings = newState;
-    //   state.status = 'success';
-    // },
-    // [deleteBooking.pending]: (state) => {
-    //   state.status = 'loading';
-    // },
-    // [deleteBooking.rejected]: (state) => {
-    //   state.status = 'failed';
-    // },
     [postBooking.fulfilled]: (state, action) => {
       state.bookings = [...state.bookings, action.payload];
       state.status = 'success';
@@ -125,6 +108,6 @@ export const bookingsSlice = createSlice({
   },
 });
 
-export const { bookingsReducer } = bookingsSlice.actions;
+export const { bookingsReducer, setStatus } = bookingsSlice.actions;
 
 export default bookingsSlice.reducer;

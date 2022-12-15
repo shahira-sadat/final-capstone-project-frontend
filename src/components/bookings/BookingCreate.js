@@ -1,113 +1,102 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
-import { postBooking } from '../../redux/bookings/bookings';
-import Navbar from '../navbar/Navbar';
+import { useParams } from 'react-router-dom';
+import { postBooking, setStatus } from '../../redux/bookings/bookings';
+import '../../assets/styles/CarDetails.css';
 
-function CarCreate() {
+const BookingCreate = () => {
   const [bookingDate, setBookingDate] = useState('');
   const [bookingDateReturn, setBookingDateReturn] = useState('');
   const [bookingCity, setBookingCity] = useState('');
-  const [bookingCar, setCar] = useState('');
+  // const [bookingCar, setCar] = useState('');
   const { id } = useParams();
   const idToUse = Number(id);
-  const { auth } = useSelector((state) => state.users);
   const { status } = useSelector((state) => state.bookings);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const idUser = JSON.parse(localStorage.getItem('auth')).id;
+  const idUser = JSON.parse(localStorage.getItem('user')).id;
+  let message = '';
+
+  useEffect(() => {
+    dispatch(setStatus());
+  });
 
   if (status === 'success') {
-    navigate('/bookings');
+    message = <h3>Booking Created</h3>;
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setCar(idToUse);
-    const bookingData = {
-      date: bookingDate,
-      date_return: bookingDateReturn,
-      city: bookingCity,
-      car_id: bookingCar,
-      user_id: idUser,
+    // setCar(idToUse);
+    const data = {
+      booking: {
+        date: bookingDate,
+        date_return: bookingDateReturn,
+        city: bookingCity,
+        car_id: idToUse,
+      },
+      user: {
+        user_id: idUser,
+      },
+
     };
-    dispatch(postBooking(bookingData));
+    dispatch(postBooking(data));
   };
 
   const screen = (
-    <>
-      <Navbar />
-      <section>
-        <h1>Book this Car </h1>
-        <form className="form-container" onSubmit={handleSubmit}>
-          <label htmlFor="date">
-            From
-            {' '}
-            <input
-              id="date"
-              type="date"
-              placeholder="Brand"
-              name="bookingDateReturn"
-              className="form-input"
-              value={bookingDateReturn}
-              onChange={(e) => setBookingDateReturn(e.target.value)}
-              required
-            />
-          </label>
+    <form className="book-form" onSubmit={handleSubmit}>
+      <div className="label">
+        <span>From:</span>
+        <input
+          id="date"
+          type="date"
+          placeholder="Brand"
+          name="bookingDateReturn"
+          className="form-input"
+          value={bookingDateReturn}
+          onChange={(e) => setBookingDateReturn(e.target.value)}
+          required
+        />
+      </div>
 
-          <label htmlFor="date-return">
-            To:
-            {' '}
-            <input
-              id="date-return"
-              type="date"
-              placeholder="Model"
-              name="bookingDate"
-              className="form-input"
-              value={bookingDate}
-              onChange={(e) => setBookingDate(e.target.value)}
-              required
-            />
-          </label>
+      <div className="label">
+        <span>To:</span>
+        <input
+          id="date-return"
+          type="date"
+          placeholder="Model"
+          name="bookingDate"
+          className="form-input"
+          value={bookingDate}
+          onChange={(e) => setBookingDate(e.target.value)}
+          required
+        />
+      </div>
 
-          {/* <label htmlFor="cities">
-            Where you want to book this car?
-            {' '}
-            <select value={bookingCity} onChange={(e) =>
-              setBookingCity(e.target.value)} id="cities">
-              {cars.map((car) => (
-                <option key={car.carId} value={cars.carId}>
-                  {car.carBrand}
-                  ,
-                  {' '}
-                  {car.carName}
-                </option>
-              ))}
-            </select>
-          </label> */}
-
-          <label htmlFor="cities">
-            Where you want to book this car?
-            {' '}
-            <select value={bookingCity} onChange={(e) => setBookingCity(e.target.value)} id="cities">
-              <option value="Paris">Paris</option>
-              <option value="Tokio">Tokio</option>
-              <option value="Madrid">Madrid</option>
-              <option value="Toronto">Toronto</option>
-              <option value="Sidney">Sidney</option>
-              <option value="Boston">Boston</option>
-            </select>
-          </label>
-          <button type="submit" className="form-button button">
-            Book
-          </button>
-        </form>
-      </section>
-    </>
+      <label htmlFor="cities">
+        City:
+        {' '}
+        <select
+          value={bookingCity}
+          onChange={(e) => setBookingCity(e.target.value)}
+          id="cities"
+        >
+          <option value="Paris">Paris</option>
+          <option value="Tokio">Tokio</option>
+          <option value="Madrid">Madrid</option>
+          <option value="Toronto">Toronto</option>
+          <option value="Sidney">Sidney</option>
+          <option value="Boston">Boston</option>
+        </select>
+      </label>
+      <button type="submit" className="form-button button">
+        Book
+      </button>
+      {message}
+    </form>
   );
 
-  return auth ? screen : <h1>You are not logged</h1>;
-}
+  return screen;
+};
 
-export default CarCreate;
+export default BookingCreate;

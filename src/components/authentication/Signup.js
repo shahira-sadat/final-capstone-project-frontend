@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { signUpUser } from '../../redux/users/users';
 
-function Signup() {
+const Signup = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { status } = useSelector((state) => state.users);
@@ -118,6 +118,6 @@ function Signup() {
       </button>
     </form>
   );
-}
+};
 
 export default Signup;

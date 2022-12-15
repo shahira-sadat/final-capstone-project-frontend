@@ -9,7 +9,6 @@ export const signUpUser = createAsyncThunk('/signup', async (state) => {
     headers: {
       'content-type': 'application/json',
       accept: 'application/json',
-      // Authorization: token,
     },
     body: JSON.stringify(state),
 
@@ -24,7 +23,6 @@ export const logInUser = createAsyncThunk('/login', async (state) => {
     headers: {
       'content-type': 'application/json',
       accept: 'application/json',
-      // Authorization: token,
     },
     body: JSON.stringify(state),
   });

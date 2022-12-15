@@ -9,7 +9,6 @@ export const getCars = createAsyncThunk('cars/getCars', async () => {
     headers: {
       'content-type': 'application/json',
       accept: 'application/json',
-      // Authorization: token,
     },
   });
   const cars = await response.json();
@@ -110,38 +109,6 @@ export const carsSlice = createSlice({
       ...state,
       status: 'failed',
     }));
-    // [getCars.pending]: (state) => {
-    //   state.status = 'loading';
-    // },
-    // [getCars.fulfilled]: (state, action) => {
-    //   const cars = action.payload.map((car) => {
-    //     const {
-    //       id: carId,
-    //       car_name: carName,
-    //       image: carImage,
-    //       brand: carBrand,
-    //       color: carColor,
-    //       year: carYear,
-    //       price: carPrice,
-    //       booked: carBooked,
-    //     } = car;
-    //     return {
-    //       carId,
-    //       carName,
-    //       carImage,
-    //       carBrand,
-    //       carColor,
-    //       carYear,
-    //       carPrice,
-    //       carBooked,
-    //     };
-    //   });
-    //   state.cars = cars;
-    //   state.status = 'success';
-    // },
-    // [getCars.rejected]: (state) => {
-    //   state.status = 'failed';
-    // },
   },
 });
 

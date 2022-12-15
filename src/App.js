@@ -16,10 +16,9 @@ import Quality from './components/team/Quality';
 import Beauty from './components/team/Beauty';
 import Navbar from './components/navbar/Navbar';
 import CarUpdate from './components/cars/CarUpdate';
-import BookingCreate from './components/bookings/BookingCreate';
 import PageNotFound from './components/authentication/PageNotFound';
 
-function App() {
+const App = () => {
   if (localStorage.getItem('user') === null) {
     return (
       <Router>
@@ -44,15 +43,12 @@ function App() {
 
         <Route path="/cars" element={<Cars />} />
         <Route path="/cars/create" element={<CarCreate />} />
-        <Route path="/cars/:id" element={<CarDetails />}>
-          <Route path="/cars/:id/book" element={<BookingCreate />} />
-        </Route>
+        <Route path="/cars/:id" element={<CarDetails />} />
         <Route path="/cars/:id/update" element={<CarUpdate />} />
 
         <Route path="/edit" element={<EditUser />} />
 
         <Route path="/bookings" element={<Bookings />} />
-        <Route path="/bookings/create" element={<BookingCreate />} />
 
         <Route path="/details" element={<Details />} />
         <Route path="/details/teams" element={<Teams />} />
@@ -63,6 +59,6 @@ function App() {
       </Routes>
     </Router>
   );
-}
+};
 
 export default App;
