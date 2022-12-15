@@ -9,7 +9,6 @@
 
 .details-img img {
   width: 100%;
-  border-radius: 5px;
   filter: drop-shadow(0 0 0.75rem var(--dark-gray));
   border-radius: 10px;
 }
@@ -75,6 +74,6 @@
   }
 
   .book-form {
-    width: 100%; 
+    width: 100%;
   }
 }
