@@ -121,7 +121,6 @@ This project was built using these technologies:
 * GitHub, Gitflow
 * Visual Studio
 
-## Live Demo:
 To visit the live API site, please Click [here.](https://639355566c9e9858f93bb1bb--bejewelled-cucurucho-3790b4.netlify.app/)
 
 ## squema
