@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import CarCard from './CarCard';
 import '../../assets/styles/Cars.css';
 import Navbar from '../navbar/Navbar';
+import { getCars } from '../../redux/cars/cars';
 
 const Cars = () => {
   const { cars } = useSelector((state) => state.cars);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    setTimeout(() => dispatch(getCars()), 3000);
+  }, [dispatch]);
 
   const responsive = {
     superLargeDesktop: {
