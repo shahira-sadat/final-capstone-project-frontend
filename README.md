@@ -209,7 +209,7 @@ Our website features:
 
 ## Project Documentation 📄
 
-- Live Demo [link](https://6391f321f275451d6914f18c--mellow-monstera-101e02.netlify.app/)
+- Live Demo [link](https://639355566c9e9858f93bb1bb--bejewelled-cucurucho-3790b4.netlify.app/)
 - API Deployment [link]()
 - API GitHub Repo [link](https://github.com/nimplay/final-capstone-project)
 
