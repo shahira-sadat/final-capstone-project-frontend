@@ -4,6 +4,8 @@ import '../../assets/styles/Navbar.css';
 
 const Navbar = () => {
   const { role } = JSON.parse(localStorage.getItem('user'));
+  const { photo } = JSON.parse(localStorage.getItem('user'));
+  const { name } = JSON.parse(localStorage.getItem('user'));
   return (
     <>
       <input type="checkbox" className="toggler" />
@@ -14,9 +16,10 @@ const Navbar = () => {
             <h2>Car Rental</h2>
             <img
               className="user-img"
-              src="https://img.icons8.com/officel/100/null/gender-neutral-user.png"
-              alt="User"
+              src={photo}
+              alt="https://img.icons8.com/officel/100/null/gender-neutral-user.png"
             />
+            <h3>{name}</h3>
             <li>
               <Link to="/cars" className="link">
                 <p>Home</p>
@@ -41,11 +44,6 @@ const Navbar = () => {
             <li>
               <Link to="/details" className="link">
                 <p>About us</p>
-              </Link>
-            </li>
-            <li>
-              <Link to="/" className="link">
-                <p>Profile Settings</p>
               </Link>
             </li>
             <li>

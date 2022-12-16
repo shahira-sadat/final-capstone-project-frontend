@@ -12,11 +12,10 @@ const CarUpdate = () => {
   const [carYear, setCarYear] = useState('');
   const [carPrice, setCarPrice] = useState('');
   const [carImage, setCarImage] = useState('');
-  const { auth } = useSelector((state) => state.users);
   const { cars } = useSelector((state) => state.cars);
   const { id } = useParams();
   const idToUse = Number(id);
-  const car = cars.find((car) => car.carId === idToUse);
+  const car = cars.find((car) => car.id === idToUse);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -47,13 +46,13 @@ const CarUpdate = () => {
         <h1>
           Update
           {' '}
-          {car.carName}
+          {car.car_name}
           {' '}
         </h1>
         <form className="form-container" onSubmit={handleSubmit}>
           <input
             type="text"
-            placeholder={car.carBrand}
+            placeholder={car.brand}
             name="carBrand"
             className="form-input"
             value={carBrand}
@@ -62,7 +61,7 @@ const CarUpdate = () => {
           />
           <input
             type="text"
-            placeholder={car.carName}
+            placeholder={car.car_name}
             name="carName"
             className="form-input"
             value={carName}
@@ -71,7 +70,7 @@ const CarUpdate = () => {
           />
           <input
             type="text"
-            placeholder={car.carImage}
+            placeholder={car.image}
             name="carImage"
             className="form-input"
             value={carImage}
@@ -80,7 +79,7 @@ const CarUpdate = () => {
           />
           <input
             type="text"
-            placeholder={car.carColor}
+            placeholder={car.color}
             name="carColor"
             className="form-input"
             value={carColor}
@@ -89,7 +88,7 @@ const CarUpdate = () => {
           />
           <input
             type="number"
-            placeholder={car.carYear}
+            placeholder={car.year}
             name="carYear"
             className="form-input"
             value={carYear}
@@ -98,7 +97,7 @@ const CarUpdate = () => {
           />
           <input
             type="number"
-            placeholder={car.carPrice}
+            placeholder={car.price}
             name="carPrice"
             className="form-input"
             value={carPrice}
@@ -113,7 +112,7 @@ const CarUpdate = () => {
     </>
   );
 
-  return auth ? screen : <h1>You are not logged</h1>;
+  return screen;
 };
 
 export default CarUpdate;
